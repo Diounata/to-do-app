@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> to-do list </title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div id="date-container">
+                <div id="div-day"> Day will be here </div>
+
+                <div>
+                    <div id="div-month"> Month will be here </div>
+                    <div id="div-year"> Year will be here </div>
+                </div>
+            </div>
+
+            <div id="div-weekday"> Weekday will be here </div>
+        </header>
+
+        <main>
+            <table>
+                <caption> To-do list </caption>
+
+                <tbody>
+                    <tr>
+                        <td id="without-task">
+                            <img src="./images/exclamation-icon.svg" alt="Exclamation icon" id="exclamation-icon" />
+                            The activities will be here when added.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <footer>
+        <button type="button" id="add-activity" onclick="functions.addTask()">+</button>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
