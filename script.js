@@ -1,9 +1,8 @@
-const todoList = {
+let todoList = {
     text: [],
     ID: [],
     taskDone: [],
-},
-    tbody = document.querySelector('tbody')
+}, tbody = document.querySelector('tbody')
 
 const functions = {
     loadPage() {
@@ -27,7 +26,9 @@ const functions = {
     },
 
     addTask() {
-        let inputTask = prompt('Add the activity here:'), isAdded = false
+        let inputTask = document.querySelector('input#input-task').value,
+            code = this.createID(),
+            isAdded = false
 
         for (let index = 0; index < todoList.ID.length; index++) {
             if (todoList.ID[index] == inputTask) {
@@ -43,27 +44,31 @@ const functions = {
                 todoList.text.unshift(`
                     <td> <p> ${inputTask} </p> </td>
                     <td>
-                        <button onclick="functions.deleteTask('${this.splitString(`${inputTask}`)}')" id="ID-${this.splitString(`${inputTask}`)}"> <img src="images/trash-icon.svg" alt="Trash icon" /> </button>
-                        <button onclick="functions.addTaskDone('${this.splitString(`${inputTask}`)}')"> <span></span> </button>
+                        <button onclick="functions.deleteTask('${code}')" id="${code}"> <img src="images/trash-icon.svg" alt="Trash icon" /> </button>
+                        <button onclick="functions.addTaskDone('${code}')"> <span></span> </button>
                     </td></tr>`
                 );
 
-                todoList.ID.unshift(this.splitString(`${inputTask}`));
+                todoList.ID.unshift(code);
                 todoList.taskDone.unshift(false)
+
+                document.querySelector('input#input-task').value = ''
+                this.closeModal()
+                this.loadPage()
             } else {
                 alert('The form field is empty.')
             }
-
-            this.loadPage()
         }
+
+        this.saveData()
     },
 
     mouseOverTd(td) {
-        document.querySelector(`button#ID-${td}`).style.display = 'inherit'
+        document.getElementById(`${td}`).style.display = 'inherit'
     },
 
     mouseOutTd(td) {
-        document.querySelector(`button#ID-${td}`).style.display = 'none'
+        document.getElementById(`${td}`).style.display = 'none'
     },
 
     deleteTask(task) {
@@ -76,6 +81,7 @@ const functions = {
         }
 
         this.loadPage()
+        this.saveData()
     },
 
     addTaskDone(task) {
@@ -83,12 +89,30 @@ const functions = {
 
         todoList.taskDone[index] === true ? todoList.taskDone[index] = false : todoList.taskDone[index] = true
         this.loadPage()
+        this.saveData()
     },
 
-    splitString(string) {
-        string = string.split(' ')
-        string = string.join('-')
-        return string
+    createID() {
+        let code = ''
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        for (let t = 0; t < 6; t++) {
+            code += `${letters[Math.floor(Math.random() * 23 + 1)]}`
+        }
+
+        return `ID-${code}`
+    },
+
+    openModal() {
+        document.querySelector('div#bg-modal').classList.add('modal-actived')
+    },
+
+    closeModal() {
+        document.querySelector('div#bg-modal').classList.remove('modal-actived')
+    },
+
+    saveData() {
+        localStorage.setItem('todoList', JSON.stringify(todoList))
     }
 }
 
@@ -101,7 +125,7 @@ window.addEventListener('load', () => {
 
     document.querySelector('header').innerHTML = `
         <div id="date-container">
-            <div id="div-day"> ${date.getDay()} </div>
+            <div id="div-day"> ${date.getDate()} </div>
 
             <div>
                 <div id="div-month"> ${dateStrings.month[date.getMonth()]} </div>
@@ -110,4 +134,9 @@ window.addEventListener('load', () => {
         </div>
 
         <div id="div-weekday"> ${dateStrings.week[date.getDay()]} </div>`
+
+    if (localStorage.getItem('todoList').length !== 0) {
+        todoList = JSON.parse(localStorage.getItem('todoList'))
+    }
+    functions.loadPage()
 });
