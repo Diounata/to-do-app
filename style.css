@@ -24,14 +24,11 @@ body, html {
 }
 
 #container header {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
 #date-container {
     display: flex;
-    flex-direction: row;
 }
 
 #date-container > div:first-child {
@@ -43,17 +40,12 @@ body, html {
 
 #date-container > div:last-child {
     font-size: 1rem;
-
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 header {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
 }
 
 table {
@@ -67,25 +59,21 @@ caption {
     display: none;
 }
 
-td#without-task {
+td#without-task, #modal h1 {
     display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    margin: 1rem 0;
 }
 
 tr {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 
-    margin: 2rem 0;
+    margin: 1rem 0;
     white-space: normal;
 }
 
 td:last-child {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
@@ -95,7 +83,6 @@ td button {
     height: 1.75rem;
 
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 
@@ -190,8 +177,6 @@ div#bg-modal {
 }
 
 #modal h1 {
-    display: inline-flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 
@@ -223,12 +208,10 @@ div#bg-modal {
 #modal input:focus {
     outline: none;
     border: 2px solid var(--green);
-    border-radius: 30px;
 }
 
 #modal footer {
     display: flex;
-    flex-direction: row;    
     justify-content: space-between;
     align-items: flex-end;
 }
@@ -273,6 +256,26 @@ div#bg-modal {
 /* Modal */
 
 
+/* Message task added */
+div.message-task-added {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    border-radius: 10px 0 0 10px;
+    background: var(--green);
+}
+
+div.message-task-added img {
+    padding-right: 0.6rem;
+}
+/* Message task added */
+
 /* CSS Responsive */
 @media screen and (max-width: 768px) {
     body, html {
@@ -283,15 +286,19 @@ div#bg-modal {
         width: 20rem;
     }
 
-/*     td button:first-child {
-        display: inherit;
-    } */
+    #modal {
+        height: 40%;
+    }
 }
 
 @media screen and (max-width: 520px) {
     #container, #modal {
         width: 16rem;
         padding: 1.5rem;
+    }
+
+    .message-task-added {
+        width: 70%;
     }
 }
 /* CSS Responsive */

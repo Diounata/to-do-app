@@ -55,6 +55,12 @@ const functions = {
                 document.querySelector('input#input-task').value = ''
                 this.closeModal()
                 this.loadPage()
+
+                document.querySelector('div.message-task-added').style.display = 'flex'
+                setTimeout(() => {
+                    document.querySelector('div.message-task-added').style.display = 'none'
+                }, 4000);
+
             } else {
                 alert('The form field is empty.')
             }
@@ -138,5 +144,6 @@ window.addEventListener('load', () => {
     if (localStorage.getItem('todoList').length !== 0) {
         todoList = JSON.parse(localStorage.getItem('todoList'))
     }
+
     functions.loadPage()
 });
