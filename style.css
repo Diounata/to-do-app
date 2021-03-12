@@ -146,7 +146,7 @@ img#exclamation-icon {
 
 /* Modal */
 div#bg-modal {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100vh;
 
@@ -168,7 +168,7 @@ div#bg-modal {
     height: 30%;
 
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #f1f1f1;
 
     display: flex;
@@ -287,7 +287,7 @@ div.message-task-added img {
     }
 
     #modal {
-        height: 40%;
+        height: 50%;
     }
 }
 

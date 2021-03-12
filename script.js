@@ -1,5 +1,6 @@
 let todoList = {
     text: [],
+    button: [],
     ID: [],
     taskDone: [],
 }, tbody = document.querySelector('tbody')
@@ -8,7 +9,7 @@ const functions = {
     loadPage() {
         tbody.innerHTML = ''
 
-        todoList.text.length == 0 ?
+        todoList.text.length === 0 ?
             tbody.innerHTML = `
                 <tr>
                     <td id="without-task">
@@ -17,56 +18,43 @@ const functions = {
                     </td>
                 </tr>`
             : todoList.text.forEach((element, index) => {
-                if (todoList.taskDone[index] == true) {
-                    tbody.innerHTML += `<tr class="task-done" onmouseover="functions.mouseOverTd('${todoList.ID[index]}')" onmouseout="functions.mouseOutTd('${todoList.ID[index]}')"> ${element}`
-                } else {
-                    tbody.innerHTML += `<tr onmouseover="functions.mouseOverTd('${todoList.ID[index]}')" onmouseout="functions.mouseOutTd('${todoList.ID[index]}')"> ${element}`
-                }
+                let classTaskDone = todoList.taskDone[index] === true ? 'class="task-done"' : ''
+
+                tbody.innerHTML += `
+                    <tr ${classTaskDone} onmouseover="functions.mouseOverTd('${todoList.ID[index]}')" onmouseout="functions.mouseOutTd('${todoList.ID[index]}')">
+                        <td> <p> ${element} <p> </td>
+                        <td> ${todoList.button[index]} </td>
+                    </tr>`
             });
     },
 
     addTask() {
         let inputTask = document.querySelector('input#input-task').value,
-            code = this.createID(),
-            isAdded = false
+            divMessageTaskAdded = document.querySelector('div.message-task-added')
+            code = this.createID()
 
-        for (let index = 0; index < todoList.ID.length; index++) {
-            if (todoList.ID[index] == inputTask) {
-                index = todoList.ID.length
-                isAdded = true
-            }
-        }
+        if (inputTask.length > 0) {
+            todoList.text.unshift(inputTask);
+            todoList.ID.unshift(code);
+            todoList.taskDone.unshift(false);
+            todoList.button.unshift(`
+                    <button onclick="functions.deleteTask('${code}')" id="${code}"> <img src="images/trash-icon.svg" alt="Trash icon" /> </button>
+                    <button onclick="functions.addTaskDone('${code}')"> <span></span> </button>
+            `);
 
-        if (isAdded) {
-            alert('There is a task equal to this added already.')
+            document.querySelector('input#input-task').value = ''
+            this.closeModal();
+            this.loadPage();
+
+            divMessageTaskAdded.style.display = 'flex'
+            setTimeout(() => {
+                divMessageTaskAdded.style.display = 'none'
+            }, 4000);
         } else {
-            if (inputTask.length > 0) {
-                todoList.text.unshift(`
-                    <td> <p> ${inputTask} </p> </td>
-                    <td>
-                        <button onclick="functions.deleteTask('${code}')" id="${code}"> <img src="images/trash-icon.svg" alt="Trash icon" /> </button>
-                        <button onclick="functions.addTaskDone('${code}')"> <span></span> </button>
-                    </td></tr>`
-                );
+            alert('The form field is empty. Try again.')
+        };
 
-                todoList.ID.unshift(code);
-                todoList.taskDone.unshift(false)
-
-                document.querySelector('input#input-task').value = ''
-                this.closeModal()
-                this.loadPage()
-
-                document.querySelector('div.message-task-added').style.display = 'flex'
-                setTimeout(() => {
-                    document.querySelector('div.message-task-added').style.display = 'none'
-                }, 4000);
-
-            } else {
-                alert('The form field is empty.')
-            }
-        }
-
-        this.saveData()
+        this.saveData();
     },
 
     mouseOverTd(td) {
@@ -99,8 +87,8 @@ const functions = {
     },
 
     createID() {
-        let code = ''
         const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        let code = ''
 
         for (let t = 0; t < 6; t++) {
             code += `${letters[Math.floor(Math.random() * 23 + 1)]}`
