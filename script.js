@@ -30,8 +30,8 @@ const functions = {
 
     addTask() {
         let inputTask = document.querySelector('input#input-task').value,
-            divMessageTaskAdded = document.querySelector('div.message-task-added')
-            code = this.createID()
+            divMessageTaskAdded = document.querySelector('div.message-task-added'),
+            code = this.createID();
 
         if (inputTask.length > 0) {
             todoList.text.unshift(inputTask);
@@ -45,6 +45,7 @@ const functions = {
             document.querySelector('input#input-task').value = ''
             this.closeModal();
             this.loadPage();
+            this.saveData();
 
             divMessageTaskAdded.style.display = 'flex'
             setTimeout(() => {
@@ -53,8 +54,6 @@ const functions = {
         } else {
             alert('The form field is empty. Try again.')
         };
-
-        this.saveData();
     },
 
     mouseOverTd(td) {
