@@ -52,7 +52,7 @@ const functions = {
                 divMessageTaskAdded.style.display = 'none'
             }, 4000);
         } else {
-            alert('The form field is empty. Try again.')
+            alert('The form field is empty. Try again.');
         };
     },
 
@@ -65,29 +65,29 @@ const functions = {
     },
 
     deleteTask(task) {
-        let index = todoList.ID.indexOf(task)
+        let index = todoList.ID.indexOf(task);
 
         if (index != -1) {
             for (pos in todoList) {
-                todoList[pos].splice(index, 1)
+                todoList[pos].splice(index, 1);
             };
         }
 
-        this.loadPage()
-        this.saveData()
+        this.loadPage();
+        this.saveData();
     },
 
     addTaskDone(task) {
-        let index = todoList.ID.indexOf(task)
+        let index = todoList.ID.indexOf(task);
 
         todoList.taskDone[index] === true ? todoList.taskDone[index] = false : todoList.taskDone[index] = true
-        this.loadPage()
-        this.saveData()
+        this.loadPage();
+        this.saveData();
     },
 
     createID() {
-        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        let code = ''
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        let code = '';
 
         for (let t = 0; t < 6; t++) {
             code += `${letters[Math.floor(Math.random() * 23 + 1)]}`
@@ -97,15 +97,15 @@ const functions = {
     },
 
     openModal() {
-        document.querySelector('div#bg-modal').classList.add('modal-actived')
+        document.querySelector('div#bg-modal').classList.add('modal-actived');
     },
 
     closeModal() {
-        document.querySelector('div#bg-modal').classList.remove('modal-actived')
+        document.querySelector('div#bg-modal').classList.remove('modal-actived');
     },
 
     saveData() {
-        localStorage.setItem('todoList', JSON.stringify(todoList))
+        localStorage.setItem('todoList', JSON.stringify(todoList));
     }
 }
 
@@ -114,7 +114,7 @@ window.addEventListener('load', () => {
     const dateStrings = {
         week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    }, date = new Date
+    }, date = new Date;
 
     document.querySelector('header').innerHTML = `
         <div id="date-container">
@@ -129,8 +129,8 @@ window.addEventListener('load', () => {
         <div id="div-weekday"> ${dateStrings.week[date.getDay()]} </div>`
 
     if (localStorage.getItem('todoList').length !== 0) {
-        todoList = JSON.parse(localStorage.getItem('todoList'))
+        todoList = JSON.parse(localStorage.getItem('todoList'));
     }
 
-    functions.loadPage()
+    functions.loadPage();
 });
