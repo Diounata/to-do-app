@@ -144,6 +144,26 @@ img#exclamation-icon {
     padding-right: 7%;
 }
 
+/* Redefine tasks */
+img#redefine-tasks {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: 5px; 
+    margin: 2rem 0 0 2rem;
+    padding: 0.5rem;
+
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+img#redefine-tasks:hover {
+    background: var(--green);
+    border-radius: 20px;
+}
+/* Redefine tasks */
+
 /* Modal */
 div#bg-modal {
     background: rgba(0, 0, 0, 0.5);
@@ -265,7 +285,7 @@ div.message-task-added {
     right: 0;
 
     box-sizing: border-box;
-    margin: 1rem 0;
+    margin: 2rem 0;
     padding: 0.7rem 1rem;
     border-radius: 10px 0 0 10px;
     background: var(--green);

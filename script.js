@@ -67,7 +67,7 @@ const functions = {
     deleteTask(task) {
         let index = todoList.ID.indexOf(task);
 
-        if (index != -1) {
+        if (index !== -1) {
             for (pos in todoList) {
                 todoList[pos].splice(index, 1);
             };
@@ -104,33 +104,41 @@ const functions = {
         document.querySelector('div#bg-modal').classList.remove('modal-actived');
     },
 
+    redefineTasks() {
+        todoList.taskDone.forEach((element, index) => {
+            todoList.taskDone[index] === true ? todoList.taskDone[index] = false : ''
+        });
+
+        this.saveData();
+        this.loadPage();
+    },
+
     saveData() {
         localStorage.setItem('todoList', JSON.stringify(todoList));
-    }
-}
+    },
 
-// Add some stuffs to the website, such as day.
-window.addEventListener('load', () => {
-    const dateStrings = {
-        week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    }, date = new Date;
+    addDate: window.addEventListener('load', () => {
+        const dateStrings = {
+            week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        }, date = new Date;
 
-    document.querySelector('header').innerHTML = `
-        <div id="date-container">
-            <div id="div-day"> ${date.getDate()} </div>
-
-            <div>
-                <div id="div-month"> ${dateStrings.month[date.getMonth()]} </div>
-                <div id="div-year"> ${date.getFullYear()} </div>
+        document.querySelector('header').innerHTML = `
+            <div id="date-container">
+                <div id="div-day"> ${date.getDate()} </div>
+    
+                <div>
+                    <div id="div-month"> ${dateStrings.month[date.getMonth()]} </div>
+                    <div id="div-year"> ${date.getFullYear()} </div>
+                </div>
             </div>
-        </div>
+    
+            <div id="div-weekday"> ${dateStrings.week[date.getDay()]} </div>`
 
-        <div id="div-weekday"> ${dateStrings.week[date.getDay()]} </div>`
+        if (localStorage.getItem('todoList').length !== 0) {
+            todoList = JSON.parse(localStorage.getItem('todoList'));
+        }
 
-    if (localStorage.getItem('todoList').length !== 0) {
-        todoList = JSON.parse(localStorage.getItem('todoList'));
-    }
-
-    functions.loadPage();
-});
+        functions.loadPage();
+    })
+}
