@@ -1,0 +1,18 @@
+.footerContainer {
+    display: grid;
+    justify-content: center;
+
+    button {
+        width: 4rem;
+        height: 4rem;
+
+        margin-top: -50%;
+        border-radius: 100%;
+        background: var(--green);
+        border: 0;
+
+        font-size: 2rem;
+        color: #46be8b;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,52 @@
+.taskContentContainer {
+    td {
+        button {
+            width: 1.75rem;
+            height: 1.75rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: inherit;
+            border-radius: 100%;
+            box-sizing: border-box;
+
+            margin: 0 0.3rem;
+            color: var(--green);
+            cursor: pointer;
+        }
+
+        button:first-child {
+            border: 0;
+            display: none;
+        }
+
+        button:last-child {
+            border: 3px solid #dee3ee;
+        }
+
+        &:first-child::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.taskDone {
+    td button:last-child {
+        border-color: var(--green);
+    }
+
+    td:first-child {
+        text-decoration: line-through;
+        opacity: 0.5;
+    }
+
+    td:last-child span {
+        padding: 0.25rem;
+
+        border-color: var(--green);
+        background: var(--green);
+        border-radius: 100%;
+    }
+}

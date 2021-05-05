@@ -1,0 +1,21 @@
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    section:first-child {
+        display: flex;
+
+        article:first-child {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+
+            font-weight: 600;
+        }
+
+        article:last-child {
+            font-size: 1rem;
+            flex-direction: column;
+        }
+    }
+}
