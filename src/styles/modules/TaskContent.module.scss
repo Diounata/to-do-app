@@ -3,6 +3,7 @@
         button {
             width: 1.75rem;
             height: 1.75rem;
+            margin: 0 0.3rem;
 
             display: flex;
             align-items: center;
@@ -12,18 +13,18 @@
             border-radius: 100%;
             box-sizing: border-box;
 
-            margin: 0 0.3rem;
+            font-size: 0;
             color: var(--green);
             cursor: pointer;
-        }
 
-        button:first-child {
-            border: 0;
-            display: none;
-        }
+            &:first-child {
+                display: none;
+                border: 0;
+            }
 
-        button:last-child {
-            border: 3px solid #dee3ee;
+            &:last-child {
+                border: 3px solid #dee3ee;
+            }
         }
 
         &:first-child::first-letter {
@@ -33,20 +34,22 @@
 }
 
 .taskDone {
-    td button:last-child {
-        border-color: var(--green);
-    }
+    td {
+        button:last-child {
+            border-color: var(--green);
+        }
 
-    td:first-child {
-        text-decoration: line-through;
-        opacity: 0.5;
-    }
+        &:first-child {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
 
-    td:last-child span {
-        padding: 0.25rem;
+        &:last-child span {
+            padding: 0.25rem;
 
-        border-color: var(--green);
-        background: var(--green);
-        border-radius: 100%;
+            border-color: var(--green);
+            background: var(--green);
+            border-radius: 100%;
+        }
     }
 }
