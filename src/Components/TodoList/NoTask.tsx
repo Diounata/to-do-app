@@ -1,4 +1,4 @@
-import styles from '../../styles/modules/NoTask.module.scss';
+import styles from '../../styles/modules/TodoList/NoTask.module.scss';
 
 export default function NoTask() {
     return (

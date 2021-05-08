@@ -1,4 +1,4 @@
-import styles from '../styles/modules/Header.module.scss';
+import styles from '../styles/modules/Main/Header.module.scss';
 import currentDate from '../utils/CreateDate';
 
 export default function Header() {

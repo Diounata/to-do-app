@@ -8,18 +8,33 @@ interface ContextData {
 
 interface ModalContextProps {
     isModalOpen: boolean;
-    changeModalState(): void;
+    changeModalState(value: boolean): void;
+    isTaskAdded: boolean;
+    changeTaskMessage(value: boolean): void;
 }
 
 export function ModalContextProvider({ children }: ContextData) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isTaskAdded, setIsTaskAdded] = useState(false);
 
-    function changeModalState() {
-        setIsModalOpen(!isModalOpen);
+    function changeModalState(value: boolean): void {
+        setIsModalOpen(value);
+    }
+
+    function changeTaskMessage(value: boolean): void {
+        setIsTaskAdded(value);
+        console.log(isTaskAdded);
     }
 
     return (
-        <ModalContext.Provider value={{ isModalOpen, changeModalState }}>
+        <ModalContext.Provider
+            value={{
+                isModalOpen,
+                changeModalState,
+                isTaskAdded,
+                changeTaskMessage,
+            }}
+        >
             {children}
         </ModalContext.Provider>
     );

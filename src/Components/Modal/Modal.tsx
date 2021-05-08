@@ -1,10 +1,15 @@
 import { useContext, useState } from 'react';
-import { ModalContext } from '../Contexts/ModalContext';
-import styles from '../styles/modules/Modal.module.scss';
+import { ModalContext } from '../../Contexts/ModalContext';
+import styles from '../../styles/modules/Modal/Modal.module.scss';
+
+import MessageError from './ErrorMessage';
 
 export default function Modal() {
-    const { isModalOpen, changeModalState } = useContext(ModalContext);
+    const { isModalOpen, changeModalState, changeTaskMessage } = useContext(ModalContext);
+
     const [isInputFilled, setIsInputFilled] = useState(false);
+    const [hasError, setHasError] = useState(false);
+    
 
     function verifyInput(amount: number): void {
         if (amount === 0) {
@@ -16,9 +21,10 @@ export default function Modal() {
 
     function addTask() {
         if (isInputFilled) {
-            changeModalState();
+            changeTaskMessage(true);
+            changeModalState(false);
         } else {
-            alert('The input field is empty.');
+            setHasError(true);
         }
     }
 
@@ -45,7 +51,7 @@ export default function Modal() {
                     <button
                         type='submit'
                         className={styles.closeModal}
-                        onClick={changeModalState}
+                        onClick={() => changeModalState(false)}
                     >
                         <img
                             src='./icons/close-circle-icon.svg'
@@ -65,6 +71,8 @@ export default function Modal() {
                         Add
                     </button>
                 </footer>
+
+                {hasError && <MessageError setHasError={setHasError} />}
             </div>
         </div>
     );

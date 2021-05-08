@@ -1,6 +1,8 @@
+import { useContext } from 'react';
+
 import Header from '../Components/Header';
 import TodoList from '../Components/TodoList';
-import Modal from '../Components/Modal';
+import Modal from '../Components/Modal/Modal';
 import AddTaskButton from '../Components/AddTaskButton';
 
 import { ModalContextProvider } from '../Contexts/ModalContext';
@@ -17,8 +19,8 @@ export default function Home() {
                 </TaskContextProvider>
             </div>
 
-            <Modal />
             <AddTaskButton />
+            <Modal />
         </ModalContextProvider>
     );
 }

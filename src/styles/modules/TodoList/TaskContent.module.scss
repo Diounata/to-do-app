@@ -37,19 +37,19 @@
     td {
         button:last-child {
             border-color: var(--green);
+
+            span {
+                padding: 0.25rem;
+
+                border-color: var(--green);
+                background: var(--green);
+                border-radius: 100%;
+            }
         }
 
         &:first-child {
             text-decoration: line-through;
             opacity: 0.5;
-        }
-
-        &:last-child span {
-            padding: 0.25rem;
-
-            border-color: var(--green);
-            background: var(--green);
-            border-radius: 100%;
         }
     }
 }

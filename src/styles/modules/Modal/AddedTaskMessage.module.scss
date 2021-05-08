@@ -1,0 +1,15 @@
+.messageContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    margin: 2rem 0;
+    padding: 0.7rem 1rem;
+
+    border-radius: 15px 0 0 15px;
+    background: var(--green);
+
+    img {
+        padding-right: 0.6rem;
+    }
+}

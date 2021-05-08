@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { TaskContext } from '../../Contexts/TaskContext';
-import styles from '../../styles/modules/TaskContent.module.scss';
+import styles from '../../styles/modules/TodoList/TaskContent.module.scss';
 
 interface TaskProps {
     text: string;
