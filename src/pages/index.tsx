@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 import Header from '../Components/Header';
 import TodoList from '../Components/TodoList';
 import Modal from '../Components/Modal/Modal';
@@ -10,17 +8,16 @@ import { TaskContextProvider } from '../Contexts/TaskContext';
 
 export default function Home() {
     return (
-        <ModalContextProvider>
-            <div className='container'>
-                <Header />
-
-                <TaskContextProvider>
+        <TaskContextProvider>
+            <ModalContextProvider>
+                <div className='container'>
+                    <Header />
                     <TodoList />
-                </TaskContextProvider>
-            </div>
+                </div>
 
-            <AddTaskButton />
-            <Modal />
-        </ModalContextProvider>
+                <AddTaskButton />
+                <Modal />
+            </ModalContextProvider>
+        </TaskContextProvider>
     );
 }

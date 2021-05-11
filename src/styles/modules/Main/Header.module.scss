@@ -7,15 +7,25 @@
         display: flex;
 
         article:first-child {
-            font-size: 2rem;
+            font-size: 2.555rem;
+            line-height: 2.6rem;
             margin-right: 0.5rem;
 
             font-weight: 600;
         }
 
         article:last-child {
+            line-height: 1.3rem;
             font-size: 1rem;
             flex-direction: column;
         }
+    }
+
+    section:last-child {
+        width: 30%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
     }
 }

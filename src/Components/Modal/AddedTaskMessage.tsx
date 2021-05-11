@@ -16,7 +16,6 @@ export default function AddedTaskMessage() {
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
             <img src='./icons/check-circle-icon.svg' alt='Check icon' />
-
             Your task has been added successfully!
         </div>
     );

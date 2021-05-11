@@ -17,8 +17,9 @@ export default function TodoList() {
                 <caption> To-do list </caption>
 
                 {hasTask ? <TaskContent /> : <NoTask />}
-                {isTaskAdded && <AddedTaskMessage />}
             </table>
+
+            {isTaskAdded && <AddedTaskMessage />}
         </main>
     );
 }

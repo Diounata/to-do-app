@@ -38,29 +38,28 @@
 
         input {
             width: 100%;
-            height: 1.8rem;
+            height: 1.6rem;
 
+            margin: 1.5rem 0;
             padding: 1.5rem;
             border: 0;
             box-sizing: border-box;
-            margin: 1.5rem 0;
 
             background: var(--background-container);
             font-family: 'Inter', sans-serif;
             font-size: 1.2rem;
 
-            transition: 0.05s;
+            transition: 0.01s linear;
 
             &:focus {
-                outline: none;
-                border: 2px solid var(--green);
+                outline: 2px solid var(--green);
             }
         }
 
         footer {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 2rem;
 
             button {
                 padding: 0.8rem;

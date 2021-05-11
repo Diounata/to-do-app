@@ -7,19 +7,38 @@ interface ContextData {
 }
 
 interface TaskContextProps {
+    tasks: TasksProps[];
+    updateTasks(value: TasksProps[]): void;
     hasTask: boolean;
-    changeHasTask(a: boolean): void;
+    changeHasTask(value: boolean): void;
+}
+
+interface TasksProps {
+    text: string;
+    isDone: boolean;
 }
 
 export function TaskContextProvider({ children }: ContextData) {
-    const [hasTask, setHasTask] = useState(true);
+    const [tasks, setTasks] = useState([]);
+    const [hasTask, setHasTask] = useState(false);
 
-    function changeHasTask(a: boolean) {
-        setHasTask(a);
+    function updateTasks(value: TasksProps[]): void {
+        setTasks(value);
+    }
+
+    function changeHasTask(value: boolean) {
+        setHasTask(value);
     }
 
     return (
-        <TaskContext.Provider value={{ hasTask, changeHasTask }}>
+        <TaskContext.Provider
+            value={{
+                tasks,
+                updateTasks,
+                hasTask,
+                changeHasTask,
+            }}
+        >
             {children}
         </TaskContext.Provider>
     );

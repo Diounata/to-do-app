@@ -15,7 +15,9 @@ export default function Header() {
                 </article>
             </section>
 
-            <section> {date.weekday} </section>
+            <section>
+                <img src="./icons/gear.svg" alt='Settings'/> {date.weekday}
+            </section>
         </header>
     );
 }

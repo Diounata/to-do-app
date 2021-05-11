@@ -23,7 +23,6 @@ export function ModalContextProvider({ children }: ContextData) {
 
     function changeTaskMessage(value: boolean): void {
         setIsTaskAdded(value);
-        console.log(isTaskAdded);
     }
 
     return (

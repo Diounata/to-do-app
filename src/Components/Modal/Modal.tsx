@@ -1,15 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { ModalContext } from '../../Contexts/ModalContext';
+import { TaskContext } from '../../Contexts/TaskContext';
 import styles from '../../styles/modules/Modal/Modal.module.scss';
 
 import MessageError from './ErrorMessage';
 
+interface TasksProps {
+    text: string;
+    isDone: boolean;
+}
+
 export default function Modal() {
     const { isModalOpen, changeModalState, changeTaskMessage } = useContext(ModalContext);
+    const { tasks, updateTasks, changeHasTask } = useContext(TaskContext);
 
     const [isInputFilled, setIsInputFilled] = useState(false);
     const [hasError, setHasError] = useState(false);
-    
+    const inputModal = useRef(null);
 
     function verifyInput(amount: number): void {
         if (amount === 0) {
@@ -21,7 +28,19 @@ export default function Modal() {
 
     function addTask() {
         if (isInputFilled) {
+            let newTask: TasksProps = {
+                text: inputModal.current.value,
+                isDone: false,
+            };
+
+            let newTaskJson = [newTask, ...tasks];
+
+            inputModal.current.value = '';
+
+            updateTasks(newTaskJson);
+            changeHasTask(true);
             changeTaskMessage(true);
+            setIsInputFilled(false);
             changeModalState(false);
         } else {
             setHasError(true);
@@ -43,6 +62,7 @@ export default function Modal() {
                     <input
                         type='text'
                         placeholder='Task'
+                        ref={inputModal}
                         onChange={e => verifyInput(e.target.value.length)}
                     />
                 </main>

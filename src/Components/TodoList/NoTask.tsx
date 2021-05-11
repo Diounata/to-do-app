@@ -9,6 +9,7 @@ export default function NoTask() {
                         src='./icons/exclamation-icon.svg'
                         alt='Exclamation icon'
                     />
+
                     The activities will be here when added.
                 </td>
             </tr>

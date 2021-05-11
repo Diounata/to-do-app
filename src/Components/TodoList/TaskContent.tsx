@@ -1,65 +1,51 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { TaskContext } from '../../Contexts/TaskContext';
 import styles from '../../styles/modules/TodoList/TaskContent.module.scss';
 
-interface TaskProps {
+interface TasksProps {
     text: string;
-    id: number;
     isDone: boolean;
 }
 
 export default function TaskContent() {
-    const { changeHasTask } = useContext(TaskContext);
-
-    const [tasks, setTasks] = useState([
-        {
-            text: 'Do homework',
-            id: 1,
-            isDone: true,
-        },
-
-        {
-            text: 'Develop some code',
-            id: 2,
-            isDone: false,
-        },
-    ]);
+    const { tasks, updateTasks, changeHasTask } = useContext(TaskContext);
 
     function addTaskDone(taskId: number) {
-        let changedTask: TaskProps[] = tasks.filter(t => t.id === taskId);
+        let changedTask: TasksProps[] = tasks.filter(
+            (t, index) => index === taskId
+        );
         changedTask[0].isDone
             ? (changedTask[0].isDone = false)
             : (changedTask[0].isDone = true);
 
-        const newArray = tasks.map(t => (t.id === taskId ? changedTask[0] : t));
+        const newArray = tasks.map((t, index) =>
+            index === taskId ? changedTask[0] : t
+        );
 
-        setTasks(newArray);
+        updateTasks(newArray);
     }
 
     function deleteTask(taskId: number) {
-        const newArray = tasks.filter(t => t.id !== taskId);
+        const newArray = tasks.filter((t, index) => index !== taskId);
 
-        newArray.length === 0 && changeHasTask(false);
-        setTasks(newArray);
+        newArray.length === 0 && changeHasTask(false); // Show NoTask component.
+        updateTasks(newArray);
     }
 
     return (
         <tbody className={styles.taskContentContainer}>
-            {tasks.map((task: TaskProps) => (
-                <tr
-                    className={task.isDone ? styles.taskDone : ''}
-                    key={task.id}
-                >
+            {tasks.map((task: TasksProps, index) => (
+                <tr className={task.isDone ? styles.taskDone : ''} key={index}>
                     <td>
                         <p>{task.text}</p>
                     </td>
 
                     <td>
-                        <button onClick={() => deleteTask(task.id)}>
+                        <button onClick={() => deleteTask(index)}>
                             <img src='./icons/trash-icon.svg' alt='Delete' />
                         </button>
 
-                        <button onClick={() => addTaskDone(task.id)}>
+                        <button onClick={() => addTaskDone(index)}>
                             <span></span>
                         </button>
                     </td>
