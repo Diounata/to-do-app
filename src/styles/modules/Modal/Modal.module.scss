@@ -16,7 +16,7 @@
 
         padding: 1.5rem;
         border-radius: 5px;
-        background: #f1f1f1;
+        background: var(--background-modal);
 
         display: flex;
         flex-direction: column;
@@ -26,14 +26,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 1rem;
 
             padding: 0;
             margin: 0;
             font-size: 1.5rem;
-
-            img {
-                margin-right: 1rem;
-            }
         }
 
         input {
@@ -45,14 +42,15 @@
             border: 0;
             box-sizing: border-box;
 
-            background: var(--background-container);
+            background: var(--background-input);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             font-size: 1.2rem;
 
             transition: 0.01s linear;
 
             &:focus {
-                outline: 2px solid var(--green);
+                outline: 2px solid var(--spotlight-color);
             }
         }
 

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import styles from '../../styles/modules/Modal/ErrorMessage.module.scss';
 
@@ -17,9 +18,14 @@ export default function MessageError({ setHasError }: Props) {
 
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
-            <img src='./icons/error-icon.svg' alt='Error icon' />
+            <Image
+                src='/icons/error-icon.svg'
+                width={18}
+                height={18}
+                alt='Error'
+            />
 
-            [ERROR] The form field is empty.
+            The form field is empty.
         </div>
     );
 }

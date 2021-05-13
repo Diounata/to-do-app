@@ -15,17 +15,24 @@
         }
 
         article:last-child {
-            line-height: 1.3rem;
+            line-height: 1.249rem;
             font-size: 1rem;
             flex-direction: column;
         }
     }
 
     section:last-child {
-        width: 30%;
-
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         align-items: center;
+
+        img {
+            cursor: pointer;
+            transition: 1s;
+
+            &:hover {
+                transform: rotate(-180deg) translateZ(0);
+            }
+        }
     }
 }

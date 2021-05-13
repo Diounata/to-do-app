@@ -1,4 +1,5 @@
 import styles from '../styles/modules/Main/Header.module.scss';
+import Image from 'next/image';
 import currentDate from '../utils/CreateDate';
 
 export default function Header() {
@@ -16,7 +17,16 @@ export default function Header() {
             </section>
 
             <section>
-                <img src="./icons/gear.svg" alt='Settings'/> {date.weekday}
+                <Image
+                    src='/icons/gear.svg'
+                    height={20}
+                    width={20}
+                    alt='Settings'
+                    title='Settings'
+                    className='svg-color'
+                />
+
+                {date.weekday}
             </section>
         </header>
     );

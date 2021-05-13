@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { ModalContext } from '../../Contexts/ModalContext';
+import Image from 'next/image';
 import styles from '../../styles/modules/Modal/AddedTaskMessage.module.scss';
 
 export default function AddedTaskMessage() {
@@ -15,7 +16,14 @@ export default function AddedTaskMessage() {
 
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
-            <img src='./icons/check-circle-icon.svg' alt='Check icon' />
+            <Image
+                src='/icons/check-circle-icon.svg'
+                width={16}
+                height={16}
+                alt='Check'
+                className='test'
+            />
+
             Your task has been added successfully!
         </div>
     );

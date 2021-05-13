@@ -2,17 +2,15 @@
     position: fixed;
     top: 0;
     right: 0;
+    gap: 0.6rem;
 
     // There will be a display: flex here when the component be loaded.
     align-items: center;
 
     margin: 2rem 0;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 1rem 0.7rem 1.2rem;
 
     border-radius: 15px 0 0 15px;
-    background: var(--green);
-
-    img {
-        padding-right: 0.6rem;
-    }
+    color: #000000;
+    background: var(--spotlight-color);
 }

@@ -14,7 +14,7 @@
             box-sizing: border-box;
 
             font-size: 0;
-            color: var(--green);
+            color: var(--spotlight-color);
             cursor: pointer;
 
             &:first-child {
@@ -36,20 +36,20 @@
 .taskDone {
     td {
         button:last-child {
-            border-color: var(--green);
+            border-color: var(--spotlight-color);
 
             span {
                 padding: 0.25rem;
 
-                border-color: var(--green);
-                background: var(--green);
+                border-color: var(--spotlight-color);
+                background: var(--spotlight-color);
                 border-radius: 100%;
             }
         }
 
         &:first-child {
             text-decoration: line-through;
-            opacity: 0.5;
+            opacity: 0.6;
         }
     }
 }

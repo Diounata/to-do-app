@@ -36,8 +36,10 @@ export default function TaskContent() {
         <tbody className={styles.taskContentContainer}>
             {tasks.map((task: TasksProps, index) => (
                 <tr className={task.isDone ? styles.taskDone : ''} key={index}>
-                    <td>
-                        <p>{task.text}</p>
+                    <td title={task.text}>
+                        <p>
+                            {index + 1}. {task.text}
+                        </p>
                     </td>
 
                     <td>

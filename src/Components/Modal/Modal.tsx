@@ -1,6 +1,7 @@
 import { useContext, useState, useRef } from 'react';
 import { ModalContext } from '../../Contexts/ModalContext';
 import { TaskContext } from '../../Contexts/TaskContext';
+import Image from 'next/image';
 import styles from '../../styles/modules/Modal/Modal.module.scss';
 
 import MessageError from './ErrorMessage';
@@ -11,11 +12,12 @@ interface TasksProps {
 }
 
 export default function Modal() {
-    const { isModalOpen, changeModalState, changeTaskMessage } = useContext(ModalContext);
+    const { isModalOpen, changeModalState, changeTaskMessage } =
+        useContext(ModalContext);
     const { tasks, updateTasks, changeHasTask } = useContext(TaskContext);
 
     const [isInputFilled, setIsInputFilled] = useState(false);
-    const [hasError, setHasError] = useState(false);
+    const [hasError, setHasError] = useState(false );
     const inputModal = useRef(null);
 
     function verifyInput(amount: number): void {
@@ -54,7 +56,15 @@ export default function Modal() {
             <div>
                 <header>
                     <h1>
-                        <img src='./icons/task-icon.svg' /> New task
+                        <Image
+                            src='/icons/task-icon.svg'
+                            width={22}
+                            height={22}
+                            alt='Task'
+                            className='svg-color'
+                        />
+
+                        New task
                     </h1>
                 </header>
 
@@ -72,6 +82,7 @@ export default function Modal() {
                         type='submit'
                         className={styles.closeModal}
                         onClick={() => changeModalState(false)}
+                        title='Close'
                     >
                         <img
                             src='./icons/close-circle-icon.svg'
@@ -83,6 +94,7 @@ export default function Modal() {
                         type='submit'
                         className={styles.addTask}
                         onClick={addTask}
+                        title='Add task'
                     >
                         <img
                             src='./icons/add-circle-icon.svg'

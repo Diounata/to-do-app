@@ -1,18 +1,24 @@
 body,
-html {
+html,
+.app {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     box-sizing: border-box;
-    background: var(--background);
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
 
+.app {
+    min-width: 100vw;
+    min-height: 100vh;
+
+    background: var(--dark-color);
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    color: var(--gray);
+    color: var(--text);
     cursor: default;
 }
 
@@ -22,11 +28,20 @@ html {
     margin-top: 3rem;
 
     border-radius: 5px;
-    background: var(--background-container);
+    background: var(--light-color);
 
     table {
         width: 100%;
     }
+}
+
+// Switch the svg color by the selected theme.
+.light-theme .svg-color {
+    filter: invert(16%) sepia(14%) saturate(850%) hue-rotate(176deg) brightness(95%) contrast(86%);
+}
+
+.dark-theme .svg-color {
+    filter: invert(97%) sepia(0%) saturate(3958%) hue-rotate(282deg) brightness(116%) contrast(76%);
 }
 
 @media (max-width: 1080px) {
@@ -48,8 +63,25 @@ html {
 }
 
 :root {
-    --background: #f0efe9;
-    --background-container: #ffffff;
-    --gray: #2f3640;
-    --green: #50e3a4;
+    .light-theme {
+        --dark-color: #f0efe9;
+        --light-color: #ffffff;
+        --text: #2f3640;
+        --spotlight-color: #50e3a4;
+
+        --plus-color: #46be8b;
+        --background-modal: #f1f1f1;
+        --background-input: #ffffff;
+    }
+
+    .dark-theme {
+        --dark-color: #121212;
+        --light-color: #1e1e1e;
+        --text: #e1e1e1;
+        --spotlight-color: #bb86fc;
+
+        --plus-color: #5f27cd;
+        --background-modal: #1e1e1e;
+        --background-input: #121212;
+    }
 }
