@@ -1,6 +1,6 @@
 body,
 html,
-.app {
+#app {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,9 +9,10 @@ html,
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
-.app {
+#app {
     min-width: 100vw;
     min-height: 100vh;
 
@@ -37,11 +38,13 @@ html,
 
 // Switch the svg color by the selected theme.
 .light-theme .svg-color {
-    filter: invert(16%) sepia(14%) saturate(850%) hue-rotate(176deg) brightness(95%) contrast(86%);
+    filter: invert(16%) sepia(14%) saturate(850%) hue-rotate(176deg)
+        brightness(95%) contrast(86%);
 }
 
 .dark-theme .svg-color {
-    filter: invert(97%) sepia(0%) saturate(3958%) hue-rotate(282deg) brightness(116%) contrast(76%);
+    filter: invert(97%) sepia(0%) saturate(3958%) hue-rotate(282deg)
+        brightness(116%) contrast(76%);
 }
 
 @media (max-width: 1080px) {

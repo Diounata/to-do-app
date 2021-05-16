@@ -1,25 +1,17 @@
-import Header from '../Components/Header';
-import TodoList from '../Components/TodoList';
-import AddTaskButton from '../Components/AddTaskButton';
-import Modal from '../Components/Modal/Modal';
-
-import { ModalContextProvider } from '../Contexts/ModalContext';
+import { SettingsContextProvider } from '../Contexts/SettingsContext';
 import { TaskContextProvider } from '../Contexts/TaskContext';
+import { ModalContextProvider } from '../Contexts/ModalContext';
+
+import App from './Components';
 
 export default function Home() {
     return (
-        <div className='app dark-theme'>
-            <TaskContextProvider>
+        <TaskContextProvider>
+            <SettingsContextProvider>
                 <ModalContextProvider>
-                    <div className='container'>
-                        <Header />
-                        <TodoList />
-                    </div>
-
-                    <AddTaskButton />
-                    <Modal />
+                    <App />
                 </ModalContextProvider>
-            </TaskContextProvider>
-        </div>
+            </SettingsContextProvider>
+        </TaskContextProvider>
     );
 }

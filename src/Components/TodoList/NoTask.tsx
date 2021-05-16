@@ -13,7 +13,6 @@ export default function NoTask() {
                         alt='Exclamation'
                         className='svg-color'
                     />
-
                     The activities will be here when added.
                 </td>
             </tr>

@@ -1,8 +1,12 @@
-import styles from '../styles/modules/Main/Header.module.scss';
+import currentDate from '../../utils/CreateDate';
 import Image from 'next/image';
-import currentDate from '../utils/CreateDate';
+import styles from '../../styles/modules/Main/Header.module.scss';
+
+import { useModal } from '../../Contexts/ModalContext';
 
 export default function Header() {
+    const { changeModalState } = useModal();
+
     const date = currentDate(); // Get informations about the day, month, year and so on.
 
     return (
@@ -24,6 +28,7 @@ export default function Header() {
                     alt='Settings'
                     title='Settings'
                     className='svg-color'
+                    onClick={() => changeModalState(true, 's')}
                 />
 
                 {date.weekday}

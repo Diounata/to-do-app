@@ -1,0 +1,141 @@
+.settingsContainer {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    place-items: center;
+
+    & > div {
+        width: 30%;
+
+        padding: 1.5rem;
+        border-radius: 5px;
+        background: var(--background-modal);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 0;
+        }
+
+        main {
+            h2 {
+                font-size: 1.1em;
+                padding: 0 2rem;
+                padding-top: 1rem;
+                margin: 0;
+
+                &:first-of-type {
+                    padding-top: 0;
+                }
+            }
+
+            article {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                padding: 0.5rem 2rem;
+
+                span::before {
+                    content: '• ';
+                    color: var(--spotlight-color);
+                    font-size: 1.2em;
+                }
+
+                button {
+                    width: 1.75rem;
+                    height: 1.75rem;
+                    margin-left: 1rem;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    background: inherit;
+                    border-radius: 100%;
+
+                    font-size: 0;
+                    color: var(--spotlight-color);
+                    cursor: pointer;
+                    border: 3px solid #dee3ee;
+                }
+            }
+        }
+
+        footer {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.5rem 2rem;
+
+            div {
+                padding: 0 0.2rem;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+
+                width: 50px;
+                height: 2px;
+
+                border-radius: 1px;
+                background: var(--spotlight-color);
+                margin: 0 0.8rem;
+            }
+        }
+    }
+}
+
+.selected {
+    button {
+        border-color: var(--spotlight-color) !important;
+
+        span {
+            padding: 0.25rem;
+
+            border-color: var(--spotlight-color);
+            background: var(--spotlight-color);
+            border-radius: 100%;
+        }
+    }
+}
+
+.modalClosed {
+    display: none;
+}
+
+.closeModal {
+    margin: auto;
+    padding: 0.4rem 3rem;
+
+    color: var(--spotlight-color);
+    border: 2px solid var(--spotlight-color);
+    border-radius: 20px;
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    &:hover {
+        color: #121212;
+        background-color: var(--spotlight-color);
+    }
+}
+
+@media (max-width: 768px) {
+    .settingsContainer > div {
+        width: 70%;
+    }
+}

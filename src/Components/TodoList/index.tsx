@@ -1,15 +1,15 @@
-import { useContext } from 'react';
-import { ModalContext } from '../../Contexts/ModalContext';
-import { TaskContext } from '../../Contexts/TaskContext';
 import styles from '../../styles/modules/TodoList/TodoList.module.scss';
-import AddedTaskMessage from '../Modal/AddedTaskMessage';
 
+import AddedTaskMessage from '../AddTaskModal/AddedTaskMessage';
 import NoTask from './NoTask';
 import TaskContent from './TaskContent';
 
+import { useTask } from '../../Contexts/TaskContext';
+import { useModal } from '../../Contexts/ModalContext';
+
 export default function TodoList() {
-    const { hasTask } = useContext(TaskContext);
-    const { isTaskAdded } = useContext(ModalContext);
+    const { hasTask } = useTask();
+    const { isTaskAdded } = useModal();
 
     return (
         <main className={styles.todoListContainer}>

@@ -1,10 +1,11 @@
-import { useState, useEffect, useContext } from 'react';
-import { ModalContext } from '../../Contexts/ModalContext';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from '../../styles/modules/Modal/AddedTaskMessage.module.scss';
+import styles from '../../styles/modules/AddTaskModal/AddedTaskMessage.module.scss';
+
+import { useModal } from '../../Contexts/ModalContext';
 
 export default function AddedTaskMessage() {
-    const { changeTaskMessage } = useContext(ModalContext);
+    const { changeTaskMessage } = useModal();
     const [display, setDisplay] = useState('flex'); // Possible values: 'flex' | 'none'
 
     useEffect(() => {
@@ -23,7 +24,6 @@ export default function AddedTaskMessage() {
                 alt='Check'
                 className='test'
             />
-
             Your task has been added successfully!
         </div>
     );

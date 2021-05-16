@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import styles from '../../styles/modules/Modal/ErrorMessage.module.scss';
+import Image from 'next/image';
+import styles from '../../styles/modules/AddTaskModal/ErrorMessage.module.scss';
 
 interface Props {
     setHasError(value: boolean): void;

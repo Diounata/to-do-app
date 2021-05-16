@@ -1,8 +1,9 @@
-import { useContext, useState, useRef } from 'react';
-import { ModalContext } from '../../Contexts/ModalContext';
-import { TaskContext } from '../../Contexts/TaskContext';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
-import styles from '../../styles/modules/Modal/Modal.module.scss';
+import styles from '../../styles/modules/AddTaskModal/Modal.module.scss';
+
+import { useModal } from '../../Contexts/ModalContext';
+import { useTask } from '../../Contexts/TaskContext';
 
 import MessageError from './ErrorMessage';
 
@@ -12,12 +13,11 @@ interface TasksProps {
 }
 
 export default function Modal() {
-    const { isModalOpen, changeModalState, changeTaskMessage } =
-        useContext(ModalContext);
-    const { tasks, updateTasks, changeHasTask } = useContext(TaskContext);
+    const { isAddTaskOpen, changeModalState, changeTaskMessage } = useModal();
+    const { tasks, updateTasks } = useTask();
 
     const [isInputFilled, setIsInputFilled] = useState(false);
-    const [hasError, setHasError] = useState(false );
+    const [hasError, setHasError] = useState(false);
     const inputModal = useRef(null);
 
     function verifyInput(amount: number): void {
@@ -40,10 +40,9 @@ export default function Modal() {
             inputModal.current.value = '';
 
             updateTasks(newTaskJson);
-            changeHasTask(true);
             changeTaskMessage(true);
             setIsInputFilled(false);
-            changeModalState(false);
+            changeModalState(false, 't');
         } else {
             setHasError(true);
         }
@@ -51,7 +50,9 @@ export default function Modal() {
 
     return (
         <div
-            className={isModalOpen ? styles.modalContainer : styles.modalClosed}
+            className={
+                isAddTaskOpen ? styles.modalContainer : styles.modalClosed
+            }
         >
             <div>
                 <header>
@@ -63,7 +64,6 @@ export default function Modal() {
                             alt='Task'
                             className='svg-color'
                         />
-
                         New task
                     </h1>
                 </header>
@@ -81,7 +81,7 @@ export default function Modal() {
                     <button
                         type='submit'
                         className={styles.closeModal}
-                        onClick={() => changeModalState(false)}
+                        onClick={() => changeModalState(false, 't')}
                         title='Close'
                     >
                         <img

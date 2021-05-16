@@ -1,6 +1,7 @@
-import { useContext } from 'react';
-import { TaskContext } from '../../Contexts/TaskContext';
 import styles from '../../styles/modules/TodoList/TaskContent.module.scss';
+
+import { useTask } from '../../Contexts/TaskContext';
+import { useSettings } from '../../Contexts/SettingsContext';
 
 interface TasksProps {
     text: string;
@@ -8,7 +9,8 @@ interface TasksProps {
 }
 
 export default function TaskContent() {
-    const { tasks, updateTasks, changeHasTask } = useContext(TaskContext);
+    const { tasks, updateTasks } = useTask();
+    const { isOrderlyTasks } = useSettings();
 
     function addTaskDone(taskId: number) {
         let changedTask: TasksProps[] = tasks.filter(
@@ -27,8 +29,6 @@ export default function TaskContent() {
 
     function deleteTask(taskId: number) {
         const newArray = tasks.filter((t, index) => index !== taskId);
-
-        newArray.length === 0 && changeHasTask(false); // Show NoTask component.
         updateTasks(newArray);
     }
 
@@ -38,7 +38,13 @@ export default function TaskContent() {
                 <tr className={task.isDone ? styles.taskDone : ''} key={index}>
                     <td title={task.text}>
                         <p>
-                            {index + 1}. {task.text}
+                            {isOrderlyTasks ? (
+                                <span>
+                                    {index + 1}. {task.text}
+                                </span>
+                            ) : (
+                                <span>{task.text}</span>
+                            )}
                         </p>
                     </td>
 
