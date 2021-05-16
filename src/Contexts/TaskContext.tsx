@@ -14,8 +14,10 @@ interface ContextData {
 
 interface TaskContextProps {
     tasks: TasksProps[];
-    updateTasks(value: TasksProps[]): void;
     hasTask: boolean;
+    updateTasks(value: TasksProps[]): void;
+    addDoneTask(taskId: number): void;
+    deleteTask(taskId: number): void;
 }
 
 interface TasksProps {
@@ -56,12 +58,28 @@ export function TaskContextProvider({ children }: ContextData) {
         tasks.length === 0 ? setHasTask(false) : setHasTask(true);
     }, [tasks]);
 
-    function updateTasks(value: TasksProps[]): void {
-        setTasks(value);
+    function addDoneTask(taskId: number) {
+        let changedTask: TasksProps[] = tasks.filter(
+            (t, index) => index === taskId
+        );
+        changedTask[0].isDone
+            ? (changedTask[0].isDone = false)
+            : (changedTask[0].isDone = true);
+
+        const newArray = tasks.map((t, index) =>
+            index === taskId ? changedTask[0] : t
+        );
+
+        updateTasks(newArray);
     }
 
-    function changeHasTask(value: boolean) {
-        setHasTask(value);
+    function deleteTask(taskId: number) {
+        const newArray = tasks.filter((t, index) => index !== taskId);
+        updateTasks(newArray);
+    }
+
+    function updateTasks(value: TasksProps[]): void {
+        setTasks(value);
     }
 
     return (
@@ -70,6 +88,8 @@ export function TaskContextProvider({ children }: ContextData) {
                 tasks,
                 updateTasks,
                 hasTask,
+                addDoneTask,
+                deleteTask,
             }}
         >
             {children}

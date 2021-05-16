@@ -9,28 +9,8 @@ interface TasksProps {
 }
 
 export default function TaskContent() {
-    const { tasks, updateTasks } = useTask();
+    const { tasks, addDoneTask, deleteTask } = useTask();
     const { isOrderlyTasks } = useSettings();
-
-    function addTaskDone(taskId: number) {
-        let changedTask: TasksProps[] = tasks.filter(
-            (t, index) => index === taskId
-        );
-        changedTask[0].isDone
-            ? (changedTask[0].isDone = false)
-            : (changedTask[0].isDone = true);
-
-        const newArray = tasks.map((t, index) =>
-            index === taskId ? changedTask[0] : t
-        );
-
-        updateTasks(newArray);
-    }
-
-    function deleteTask(taskId: number) {
-        const newArray = tasks.filter((t, index) => index !== taskId);
-        updateTasks(newArray);
-    }
 
     return (
         <tbody className={styles.taskContentContainer}>
@@ -40,7 +20,7 @@ export default function TaskContent() {
                         <p>
                             {isOrderlyTasks ? (
                                 <span>
-                                    {index + 1}. {task.text}
+                                    {index + 1}. <span>{task.text}</span>
                                 </span>
                             ) : (
                                 <span>{task.text}</span>
@@ -53,7 +33,7 @@ export default function TaskContent() {
                             <img src='./icons/trash-icon.svg' alt='Delete' />
                         </button>
 
-                        <button onClick={() => addTaskDone(index)}>
+                        <button onClick={() => addDoneTask(index)}>
                             <span></span>
                         </button>
                     </td>

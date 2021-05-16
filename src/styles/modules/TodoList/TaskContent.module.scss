@@ -27,8 +27,15 @@
             }
         }
 
-        &:first-child::first-letter {
-            text-transform: uppercase;
+        &:first-child {
+            span {
+                display: inline-block !important;
+            }
+
+            &::first-letter,
+            span::first-letter {
+                text-transform: capitalize !important;
+            }
         }
     }
 }
@@ -47,9 +54,9 @@
             }
         }
 
-        &:first-child {
+        &:first-child, &:first-child span {
             text-decoration: line-through;
-            opacity: 0.6;
+            opacity: 0.65;
         }
     }
 }
