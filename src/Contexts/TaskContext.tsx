@@ -28,27 +28,15 @@ interface TasksProps {
 export function TaskContextProvider({ children }: ContextData) {
     const [tasks, setTasks] = useState([
         {
-            text: 'Do homework',
+            text: '1',
             isDone: true,
         },
         {
-            text: 'Make a cake',
+            text: '2',
             isDone: true,
         },
         {
-            text: 'Wash dishes',
-            isDone: true,
-        },
-        {
-            text: 'Study English',
-            isDone: true,
-        },
-        {
-            text: 'Code',
-            isDone: false,
-        },
-        {
-            text: 'Play any games',
+            text: '3',
             isDone: false,
         },
     ]);

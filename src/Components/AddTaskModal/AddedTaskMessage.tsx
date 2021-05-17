@@ -17,14 +17,19 @@ export default function AddedTaskMessage() {
 
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
-            <Image
-                src='/icons/check-circle-icon.svg'
-                width={16}
-                height={16}
-                alt='Check'
-                className='test'
-            />
-            Your task has been added successfully!
+            <div>
+                <Image
+                    src='/icons/check-circle-icon.svg'
+                    width={16}
+                    height={16}
+                    alt='Check'
+                    className='test'
+                />
+
+                Your task has been added successfully!
+            </div>
+
+            <div className={styles.progressBar}></div>
         </div>
     );
 }

@@ -1,0 +1,40 @@
+.cautionMessageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        button {
+            color: #f1f1f1;
+            padding: 0.6rem 1rem;
+            border: 0;
+            cursor: pointer;
+
+            &:first-of-type {
+                background: #e74c3c;
+
+                &:hover {
+                    background: #cc4637;
+                }
+            }
+
+            &:last-of-type {
+                background: #27ae60;
+
+                &:hover {
+                    background: #218d4e;
+                }
+            }
+        }
+    }
+}

@@ -8,16 +8,14 @@ interface ContextData {
     children: ReactNode;
 }
 
-interface TasksProps {
-    text: string;
-    isDone: boolean;
-}
-
 interface SettingsProps {
     isDarkTheme: boolean;
     isOrderlyTasks: boolean;
+    isCautionMessageOn: boolean;
+    selectedFunction: number;
 
     changeConfig(value: boolean, config: string): void;
+    changeCautionMessage(value: boolean, numberFunction: number): void;
     deleteDoneTasks(): void;
     deleteAllTasks(): void;
     dismarkAllTasks(): void;
@@ -25,8 +23,17 @@ interface SettingsProps {
 
 export function SettingsContextProvider({ children }: ContextData) {
     const { tasks, updateTasks } = useTask();
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
     const [isOrderlyTasks, setIsOrderlyTasks] = useState(false);
+    const [isCautionMessageOn, setIsCautionMessageOn] = useState(false);
+
+    // -1 = null; 0 = delete done tasks; 1 = delete all tasks; 2 = dismark all tasks.
+    const [selectedFunction, setSelectedFunction] = useState(-1);
+
+    function changeCautionMessage(value: boolean, numberFunction: number) {
+        setSelectedFunction(numberFunction);
+        setIsCautionMessageOn(value);
+    }
 
     function changeConfig(value: boolean, config: string) {
         // 't' = theme; 'o' = orderly tasks;
@@ -60,7 +67,10 @@ export function SettingsContextProvider({ children }: ContextData) {
             value={{
                 isDarkTheme,
                 isOrderlyTasks,
+                isCautionMessageOn,
+                selectedFunction,
                 changeConfig,
+                changeCautionMessage,
                 deleteDoneTasks,
                 deleteAllTasks,
                 dismarkAllTasks,

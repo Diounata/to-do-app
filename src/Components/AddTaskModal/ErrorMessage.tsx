@@ -18,14 +18,18 @@ export default function MessageError({ setHasError }: Props) {
 
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
-            <Image
-                src='/icons/error-icon.svg'
-                width={18}
-                height={18}
-                alt='Error'
-            />
+            <div>
+                <Image
+                    src='/icons/error-icon.svg'
+                    width={18}
+                    height={18}
+                    alt='Error'
+                />
 
-            The form field is empty.
+                The form field is empty.
+            </div>
+
+            <div className={styles.progressBar}></div>
         </div>
     );
 }
