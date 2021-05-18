@@ -1,11 +1,14 @@
+import Image from 'next/image';
+import styles from '../../styles/modules/Settings/CautionMessage.module.scss';
+
 import { useModal } from '../../Contexts/ModalContext';
 import { useSettings } from '../../Contexts/SettingsContext';
-import styles from '../../styles/modules/Settings/CautionMessage.module.scss';
 
 export default function CautionMessage() {
     const {
         selectedFunction,
         changeCautionMessage,
+        changeHasSettingChanged,
         deleteDoneTasks,
         deleteAllTasks,
         dismarkAllTasks,
@@ -34,7 +37,16 @@ export default function CautionMessage() {
 
     return (
         <div className={styles.cautionMessageContainer}>
-            <h2>Caution!</h2>
+            <h2 style={{ display: 'flex', alignItems: 'center' }}>
+                <Image
+                    src='/icons/danger.svg'
+                    width={24}
+                    height={24}
+                    alt='Danger'
+                />
+
+                Caution!
+            </h2>
 
             <p> Are you sure you want to {message[selectedFunction].text}? </p>
 
@@ -46,8 +58,9 @@ export default function CautionMessage() {
                 <button
                     onClick={() => (
                         message[selectedFunction].action(),
-                        changeCautionMessage(false, -1),
-                        changeModalState(false, 's')
+                        changeCautionMessage(false, selectedFunction),
+                        changeModalState(false, 's'),
+                        changeHasSettingChanged(true)
                     )}
                 >
                     Yes

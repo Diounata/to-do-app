@@ -12,35 +12,23 @@ interface ContextData {
     children: ReactNode;
 }
 
-interface TaskContextProps {
-    tasks: TasksProps[];
-    hasTask: boolean;
-    updateTasks(value: TasksProps[]): void;
-    addDoneTask(taskId: number): void;
-    deleteTask(taskId: number): void;
-}
-
 interface TasksProps {
     text: string;
     isDone: boolean;
 }
 
+interface TaskContextProps {
+    tasks: TasksProps[];
+    hasTask: boolean;
+
+    updateTasks(value: TasksProps[]): void;
+    addDoneTask(taskId: number): void;
+    deleteTask(taskId: number): void;
+}
+
 export function TaskContextProvider({ children }: ContextData) {
-    const [tasks, setTasks] = useState([
-        {
-            text: '1',
-            isDone: true,
-        },
-        {
-            text: '2',
-            isDone: true,
-        },
-        {
-            text: '3',
-            isDone: false,
-        },
-    ]);
-    const [hasTask, setHasTask] = useState(true);
+    const [tasks, setTasks] = useState([]);
+    const [hasTask, setHasTask] = useState(false);
 
     useEffect(() => {
         tasks.length === 0 ? setHasTask(false) : setHasTask(true);

@@ -13,9 +13,11 @@ interface SettingsProps {
     isOrderlyTasks: boolean;
     isCautionMessageOn: boolean;
     selectedFunction: number;
+    hasSettingChanged: boolean;
 
     changeConfig(value: boolean, config: string): void;
     changeCautionMessage(value: boolean, numberFunction: number): void;
+    changeHasSettingChanged(value: boolean): void;
     deleteDoneTasks(): void;
     deleteAllTasks(): void;
     dismarkAllTasks(): void;
@@ -26,6 +28,7 @@ export function SettingsContextProvider({ children }: ContextData) {
     const [isDarkTheme, setIsDarkTheme] = useState(true);
     const [isOrderlyTasks, setIsOrderlyTasks] = useState(false);
     const [isCautionMessageOn, setIsCautionMessageOn] = useState(false);
+    const [hasSettingChanged, setHasSettingChanged] = useState(false);
 
     // -1 = null; 0 = delete done tasks; 1 = delete all tasks; 2 = dismark all tasks.
     const [selectedFunction, setSelectedFunction] = useState(-1);
@@ -43,6 +46,10 @@ export function SettingsContextProvider({ children }: ContextData) {
         } else if (config === 'o') {
             setIsOrderlyTasks(value);
         }
+    }
+
+    function changeHasSettingChanged(value: boolean) {
+        setHasSettingChanged(value);
     }
 
     function deleteDoneTasks() {
@@ -69,6 +76,8 @@ export function SettingsContextProvider({ children }: ContextData) {
                 isOrderlyTasks,
                 isCautionMessageOn,
                 selectedFunction,
+                hasSettingChanged,
+                changeHasSettingChanged,
                 changeConfig,
                 changeCautionMessage,
                 deleteDoneTasks,
