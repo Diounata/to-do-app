@@ -32,6 +32,7 @@ export function TaskContextProvider({ children }: ContextData) {
 
     useEffect(() => {
         tasks.length === 0 ? setHasTask(false) : setHasTask(true);
+        // localStorage.setItem('storagedTasks', JSON.stringify(tasks));s
     }, [tasks]);
 
     function addDoneTask(taskId: number) {
