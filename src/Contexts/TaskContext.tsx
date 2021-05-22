@@ -32,8 +32,17 @@ export function TaskContextProvider({ children }: ContextData) {
 
     useEffect(() => {
         tasks.length === 0 ? setHasTask(false) : setHasTask(true);
-        // localStorage.setItem('storagedTasks', JSON.stringify(tasks));s
     }, [tasks]);
+
+    function updateTasks(value: TasksProps[]): void {
+        setTasks(value);
+
+        if (tasks.length === 0) {
+            localStorage.setItem('storagedTasks', JSON.stringify([]));
+        } else {
+            localStorage.setItem('storagedTasks', JSON.stringify(value));
+        }
+    }
 
     function addDoneTask(taskId: number) {
         let changedTask: TasksProps[] = tasks.filter(
@@ -55,9 +64,11 @@ export function TaskContextProvider({ children }: ContextData) {
         updateTasks(newArray);
     }
 
-    function updateTasks(value: TasksProps[]): void {
-        setTasks(value);
-    }
+    useEffect(() => {
+        const localData = localStorage.getItem('storagedTasks');
+        updateTasks(JSON.parse(localData));
+        localStorage.setItem('storagedTasks', localData);
+    }, []);
 
     return (
         <TaskContext.Provider
