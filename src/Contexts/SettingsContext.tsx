@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 
 import { useTask } from './TaskContext';
 
@@ -43,8 +49,10 @@ export function SettingsContextProvider({ children }: ContextData) {
 
         if (config === 't') {
             setIsDarkTheme(value);
+            localStorage.setItem('themeConfig', JSON.stringify(value));
         } else if (config === 'o') {
             setIsOrderlyTasks(value);
+            localStorage.setItem('orderlyConfig', JSON.stringify(value));
         }
     }
 
@@ -68,6 +76,16 @@ export function SettingsContextProvider({ children }: ContextData) {
 
         updateTasks(newTask);
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('themeConfig')) {
+            setIsDarkTheme(JSON.parse(localStorage.getItem('themeConfig')));
+        }
+
+        if (localStorage.getItem('orderlyConfig')) {
+            setIsOrderlyTasks(JSON.parse(localStorage.getItem('orderlyConfig')));
+        }
+    }, []);
 
     return (
         <SettingsContext.Provider
