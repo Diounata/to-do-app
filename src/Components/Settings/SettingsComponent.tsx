@@ -6,8 +6,13 @@ import { useSettings } from '../../Contexts/SettingsContext';
 
 export default function SettingsComponent() {
     const { changeModalState } = useModal();
-    const { changeConfig, changeCautionMessage, isDarkTheme, isOrderlyTasks } =
-        useSettings();
+    const {
+        changeConfig,
+        changeCautionMessage,
+        isDarkTheme,
+        isOrderlyTasks,
+        isInvertedTasks,
+    } = useSettings();
 
     return (
         <>
@@ -28,11 +33,25 @@ export default function SettingsComponent() {
                     </div>
                 </article>
 
+                <article className={isInvertedTasks ? styles.selected : ''}>
+                    <span>Invert order tasks</span>
+
+                    <div>
+                        <button
+                            onClick={() => changeConfig(!isInvertedTasks, 'i')}
+                        >
+                            <span></span>
+                        </button>
+                    </div>
+                </article>
+
                 <article className={isOrderlyTasks ? styles.selected : ''}>
                     <span>Enable orderly task list by a number</span>
 
                     <div>
-                        <button onClick={() => changeConfig(!isOrderlyTasks, 'o')}>
+                        <button
+                            onClick={() => changeConfig(!isOrderlyTasks, 'o')}
+                        >
                             <span></span>
                         </button>
                     </div>

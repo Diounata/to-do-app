@@ -17,6 +17,7 @@ interface ContextData {
 interface SettingsProps {
     isDarkTheme: boolean;
     isOrderlyTasks: boolean;
+    isInvertedTasks: boolean;
     isCautionMessageOn: boolean;
     selectedFunction: number;
     hasSettingChanged: boolean;
@@ -32,6 +33,7 @@ interface SettingsProps {
 export function SettingsContextProvider({ children }: ContextData) {
     const { tasks, updateTasks } = useTask();
     const [isDarkTheme, setIsDarkTheme] = useState(true);
+    const [isInvertedTasks, setIsInvertedTasks] = useState(false);
     const [isOrderlyTasks, setIsOrderlyTasks] = useState(false);
     const [isCautionMessageOn, setIsCautionMessageOn] = useState(false);
     const [hasSettingChanged, setHasSettingChanged] = useState(false);
@@ -45,15 +47,28 @@ export function SettingsContextProvider({ children }: ContextData) {
     }
 
     function changeConfig(value: boolean, config: string) {
-        // 't' = theme; 'o' = orderly tasks;
+        // 't' = theme; 'o' = orderly tasks; 'i' = inverted tasks.
+
+        const settings = {
+            isDarkTheme: isDarkTheme,
+            isInvertedTasks: isInvertedTasks,
+            isOrderlyTasks: isOrderlyTasks,
+        };
 
         if (config === 't') {
             setIsDarkTheme(value);
-            localStorage.setItem('themeConfig', JSON.stringify(value));
+            settings.isDarkTheme = value;
         } else if (config === 'o') {
             setIsOrderlyTasks(value);
-            localStorage.setItem('orderlyConfig', JSON.stringify(value));
+            settings.isOrderlyTasks = value;
+        } else if (config === 'i') {
+            setIsInvertedTasks(value);
+            settings.isInvertedTasks = value;
+        } else {
+            console.log('[ERROR] It was not possible to execute the function.');
         }
+
+        localStorage.setItem('settings', JSON.stringify(settings));
     }
 
     function changeHasSettingChanged(value: boolean) {
@@ -78,12 +93,20 @@ export function SettingsContextProvider({ children }: ContextData) {
     }
 
     useEffect(() => {
-        if (localStorage.getItem('themeConfig')) {
-            setIsDarkTheme(JSON.parse(localStorage.getItem('themeConfig')));
+        interface SettingsProps {
+            isDarkTheme: boolean;
+            isOrderlyTasks: boolean;
+            isInvertedTasks: boolean;
         }
 
-        if (localStorage.getItem('orderlyConfig')) {
-            setIsOrderlyTasks(JSON.parse(localStorage.getItem('orderlyConfig')));
+        const lastSettings: SettingsProps = JSON.parse(
+            localStorage.getItem('settings')
+        );
+
+        if (localStorage.getItem('settings')) {
+            setIsDarkTheme(lastSettings.isDarkTheme);
+            setIsOrderlyTasks(lastSettings.isOrderlyTasks);
+            setIsInvertedTasks(lastSettings.isInvertedTasks);
         }
     }, []);
 
@@ -92,6 +115,7 @@ export function SettingsContextProvider({ children }: ContextData) {
             value={{
                 isDarkTheme,
                 isOrderlyTasks,
+                isInvertedTasks,
                 isCautionMessageOn,
                 selectedFunction,
                 hasSettingChanged,

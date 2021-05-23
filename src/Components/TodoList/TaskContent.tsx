@@ -10,11 +10,15 @@ interface TasksProps {
 
 export default function TaskContent() {
     const { tasks, addDoneTask, deleteTask } = useTask();
-    const { isOrderlyTasks } = useSettings();
+    const { isOrderlyTasks, isInvertedTasks } = useSettings();
+
+    const tasksArray = isInvertedTasks
+        ? tasks.map(t => t).reverse()
+        : tasks.map(t => t)
 
     return (
         <tbody className={styles.taskContentContainer}>
-            {tasks.map((task: TasksProps, index) => (
+            {tasksArray.map((task: TasksProps, index: number) => (
                 <tr className={task.isDone ? styles.taskDone : ''} key={index}>
                     <td title={task.text}>
                         <p>
