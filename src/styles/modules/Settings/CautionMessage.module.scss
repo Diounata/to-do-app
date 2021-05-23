@@ -4,6 +4,10 @@
     justify-content: space-between;
     gap: 0.8rem;
 
+    @media (max-width: 600px) {
+        padding: 1rem;
+    }
+
     h2 {
         margin: 0;
         padding: 0;

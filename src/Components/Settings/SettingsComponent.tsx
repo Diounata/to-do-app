@@ -21,17 +21,21 @@ export default function SettingsComponent() {
                 <article className={isDarkTheme ? styles.selected : ''}>
                     <span>Dark theme</span>
 
-                    <button onClick={() => changeConfig(!isDarkTheme, 't')}>
-                        <span></span>
-                    </button>
+                    <div>
+                        <button onClick={() => changeConfig(!isDarkTheme, 't')}>
+                            <span></span>
+                        </button>
+                    </div>
                 </article>
 
                 <article className={isOrderlyTasks ? styles.selected : ''}>
                     <span>Enable orderly task list by a number</span>
 
-                    <button onClick={() => changeConfig(!isOrderlyTasks, 'o')}>
-                        <span></span>
-                    </button>
+                    <div>
+                        <button onClick={() => changeConfig(!isOrderlyTasks, 'o')}>
+                            <span></span>
+                        </button>
+                    </div>
                 </article>
 
                 <h2>Functions</h2>
