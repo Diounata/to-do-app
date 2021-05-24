@@ -12,19 +12,25 @@ export default function TaskContent() {
     const { tasks, addDoneTask, deleteTask } = useTask();
     const { isOrderlyTasks, isInvertedTasks } = useSettings();
 
-    const tasksArray = isInvertedTasks
-        ? tasks.map(t => t).reverse()
-        : tasks.map(t => t)
+    let tasksArray: TasksProps[], indexArray: number[];
+
+    if (isInvertedTasks) {
+        tasksArray = tasks.map(t => t).reverse();
+        indexArray = tasks.map((t, index: number) => index).reverse();
+    } else {
+        tasksArray = tasks.map(t => t);
+        indexArray = tasks.map((t, index: number) => index);
+    }
 
     return (
         <tbody className={styles.taskContentContainer}>
-            {tasksArray.map((task: TasksProps, index: number) => (
-                <tr className={task.isDone ? styles.taskDone : ''} key={index}>
+            {tasksArray.map((task: TasksProps, i: number) => (
+                <tr className={task.isDone ? styles.taskDone : ''} key={indexArray[i]}>
                     <td title={task.text}>
                         <p>
                             {isOrderlyTasks ? (
                                 <span>
-                                    {index + 1}. <span>{task.text}</span>
+                                    {i + 1}. <span>{task.text}</span>
                                 </span>
                             ) : (
                                 <span>{task.text}</span>
@@ -33,11 +39,11 @@ export default function TaskContent() {
                     </td>
 
                     <td>
-                        <button onClick={() => deleteTask(index)}>
+                        <button onClick={() => deleteTask(indexArray[i])}>
                             <img src='./icons/trash-icon.svg' alt='Delete' />
                         </button>
 
-                        <button onClick={() => addDoneTask(index)}>
+                        <button onClick={() => addDoneTask(indexArray[i])}>
                             <span></span>
                         </button>
                     </td>
