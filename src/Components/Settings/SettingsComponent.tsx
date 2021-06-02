@@ -34,7 +34,7 @@ export default function SettingsComponent() {
                 </article>
 
                 <article className={isInvertedTasks ? styles.selected : ''}>
-                    <span>Invert order tasks</span>
+                    <span>Invert tasks order</span>
 
                     <div>
                         <button
