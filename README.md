@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src="por link da imagem do projeto aq" alt="App image" />
+<img src="https://github.com/Diounata/to-do-app/blob/main/.github/demo-app.png" alt="App image" />
 </p>
  
 ## :dart: Overview
@@ -33,11 +33,13 @@ This project was made using the following techs:
 ## :performing_arts: Features
 
 -   ### Tasks
+
     -   Create tasks
     -   Change task situation (done/undone)
     -   Delete tasks
 
 -   ### Settings
+
     -   Switch theme (dark/light)
     -   Invert tasks order
     -   Order tasks by a number
@@ -48,6 +50,7 @@ This project was made using the following techs:
     -   Dismark all done tasks
 
 ## 🖼️ Layout
+
 The to-do app layout was inspired in an item from this list that you may check <a href='https://medium.muz.li/todo-list-inspiration-a1d736c2718a'>here</a>.
 
 ## :gear: How to use
