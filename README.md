@@ -9,7 +9,7 @@
 </p>
 
 <p align='center'>
-<a href='#dart-overview'>Overview</a> &nbsp; | &nbsp; <a href='#books-technologies'>Technologies</a> &nbsp; | &nbsp; <a href='#performing_arts-features'>Features</a> &nbsp; | &nbsp; <a href='#gear-how-to-use'>How to use</a> &nbsp; | &nbsp; <a href='#balance_scale-license'>License</a> 
+<a href='#dart-overview'>Overview</a> &nbsp; | &nbsp; <a href='#books-technologies'>Technologies</a> &nbsp; | &nbsp; <a href='#performing_arts-features'>Features</a> &nbsp; | &nbsp; <a href='#framed_picture-layout'>Layout</a> &nbsp; | &nbsp; <a href='#gear-how-to-use'>How to use</a> &nbsp; | &nbsp; <a href='#balance_scale-license'>License</a> 
 </p>
 
 <p align='center'>
@@ -46,6 +46,9 @@ This project was made using the following techs:
     -   Delete done tasks
     -   Delete all tasks
     -   Dismark all done tasks
+
+## 🖼️ Layout
+The to-do app layout was inspired in an item from this list that you may check <a href='https://medium.muz.li/todo-list-inspiration-a1d736c2718a'>here</a>.
 
 ## :gear: How to use
 
