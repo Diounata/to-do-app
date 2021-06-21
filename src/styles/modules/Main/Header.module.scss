@@ -27,7 +27,9 @@
         align-items: center;
         gap: 0.5rem;
 
-        img {
+        svg {
+            display: grid;
+            place-items: center;
             cursor: pointer;
             transition: 1s;
 

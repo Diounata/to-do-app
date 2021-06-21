@@ -3,6 +3,7 @@ import styles from '../../styles/modules/Settings/Settings.module.scss';
 
 import { useModal } from '../../Contexts/ModalContext';
 import { useSettings } from '../../Contexts/SettingsContext';
+import Heart from '../../Icons/Heart';
 
 export default function SettingsComponent() {
     const { changeModalState } = useModal();
@@ -85,7 +86,7 @@ export default function SettingsComponent() {
             </main>
 
             <div
-                className={styles.closeModal}
+                className={styles.closeModalButton}
                 onClick={() => changeModalState(false, 's')}
             >
                 Close
@@ -93,12 +94,7 @@ export default function SettingsComponent() {
 
             <footer>
                 Made with
-                <Image
-                    src='/icons/heart-icon.svg'
-                    width={16}
-                    height={16}
-                    alt='Heart'
-                />
+                <Heart />
                 by Diou
             </footer>
         </>

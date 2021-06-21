@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from '../../styles/modules/Main/Header.module.scss';
 
 import { useModal } from '../../Contexts/ModalContext';
+import Gear from '../../Icons/Gear';
 
 export default function Header() {
     const { changeModalState } = useModal();
@@ -21,15 +22,9 @@ export default function Header() {
             </section>
 
             <section>
-                <Image
-                    src='/icons/gear.svg'
-                    height={20}
-                    width={20}
-                    alt='Settings'
-                    title='Settings'
-                    className='svg-color'
-                    onClick={() => changeModalState(true, 's')}
-                />
+                <span onClick={() => changeModalState(true, 's')}>
+                    <Gear />
+                </span>
 
                 {date.weekday}
             </section>

@@ -3,6 +3,7 @@ import styles from '../../styles/modules/Settings/CautionMessage.module.scss';
 
 import { useModal } from '../../Contexts/ModalContext';
 import { useSettings } from '../../Contexts/SettingsContext';
+import DangerIcon from '../../Icons/DangerIcon';
 
 export default function CautionMessage() {
     const {
@@ -38,12 +39,7 @@ export default function CautionMessage() {
     return (
         <div className={styles.cautionMessageContainer}>
             <h2 style={{ display: 'flex', alignItems: 'center' }}>
-                <Image
-                    src='/icons/danger.svg'
-                    width={24}
-                    height={24}
-                    alt='Danger'
-                />
+                <DangerIcon />
 
                 Caution!
             </h2>

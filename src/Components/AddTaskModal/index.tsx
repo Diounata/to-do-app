@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
-import Image from 'next/image';
 import styles from '../../styles/modules/AddTaskModal/Modal.module.scss';
 
 import { useModal } from '../../Contexts/ModalContext';
 import { useTask } from '../../Contexts/TaskContext';
 
 import MessageError from './ErrorMessage';
+import Clipboard from '../../Icons/Clipboard';
+import CloseCircle from '../../Icons/CloseCircle';
+import AddCircle from '../../Icons/AddCircle';
 
 interface TasksProps {
     text: string;
@@ -57,13 +59,7 @@ export default function Modal() {
             <div>
                 <header>
                     <h1>
-                        <Image
-                            src='/icons/task-icon.svg'
-                            width={22}
-                            height={22}
-                            alt='Task'
-                            className='svg-color'
-                        />
+                        <Clipboard />
                         New task
                     </h1>
                 </header>
@@ -84,10 +80,7 @@ export default function Modal() {
                         onClick={() => changeModalState(false, 't')}
                         title='Close'
                     >
-                        <img
-                            src='./icons/close-circle-icon.svg'
-                            alt='Close icon'
-                        />
+                        <CloseCircle />
                         Close
                     </button>
                     <button
@@ -96,10 +89,7 @@ export default function Modal() {
                         onClick={addTask}
                         title='Add task'
                     >
-                        <img
-                            src='./icons/add-circle-icon.svg'
-                            alt='Add task icon'
-                        />
+                        <AddCircle />
                         Add
                     </button>
                 </footer>

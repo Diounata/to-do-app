@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import styles from '../../styles/modules/Settings/ChangedSettingMessage.module.scss';
+
+import CheckCircle from '../../Icons/CheckCircle';
 
 import { useSettings } from '../../Contexts/SettingsContext';
 
@@ -26,13 +27,7 @@ export default function ChangedTaskMessage() {
     return (
         <div className={styles.container} style={{ display: display }}>
             <div>
-                <Image
-                    src='/icons/check-circle-icon.svg'
-                    width={16}
-                    height={16}
-                    alt='Check'
-                />
-
+                <CheckCircle />
                 Your {message[selectedFunction]} successfuly!
             </div>
 

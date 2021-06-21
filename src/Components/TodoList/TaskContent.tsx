@@ -1,5 +1,7 @@
 import styles from '../../styles/modules/TodoList/TaskContent.module.scss';
 
+import Trash from '../../Icons/Trash';
+
 import { useTask } from '../../Contexts/TaskContext';
 import { useSettings } from '../../Contexts/SettingsContext';
 
@@ -40,7 +42,7 @@ export default function TaskContent() {
 
                     <td>
                         <button onClick={() => deleteTask(indexArray[i])}>
-                            <img src='./icons/trash-icon.svg' alt='Delete' />
+                            <Trash />
                         </button>
 
                         <button onClick={() => addDoneTask(indexArray[i])}>

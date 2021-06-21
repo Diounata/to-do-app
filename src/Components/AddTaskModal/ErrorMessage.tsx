@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import styles from '../../styles/modules/AddTaskModal/ErrorMessage.module.scss';
+
+import ExclamationErrorIcon from '../../Icons/ExclamationErrorIcon';
 
 interface Props {
     setHasError(value: boolean): void;
@@ -19,13 +20,7 @@ export default function MessageError({ setHasError }: Props) {
     return (
         <div className={styles.messageContainer} style={{ display: display }}>
             <div>
-                <Image
-                    src='/icons/error-icon.svg'
-                    width={18}
-                    height={18}
-                    alt='Error'
-                />
-
+                <ExclamationErrorIcon />
                 The form field is empty.
             </div>
 

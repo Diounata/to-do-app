@@ -1,18 +1,13 @@
-import Image from 'next/image';
 import styles from '../../styles/modules/TodoList/NoTask.module.scss';
+
+import ExclamationIcon from '../../Icons/ExclamationIcon';
 
 export default function NoTask() {
     return (
         <tbody>
             <tr className={styles.noTaskContainer}>
                 <td>
-                    <Image
-                        src='/icons/exclamation-icon.svg'
-                        width={30}
-                        height={30}
-                        alt='Exclamation'
-                        className='svg-color'
-                    />
+                    <ExclamationIcon />
                     The activities will be here when added.
                 </td>
             </tr>

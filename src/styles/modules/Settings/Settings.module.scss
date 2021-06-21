@@ -81,8 +81,8 @@
 
             padding: 0.5rem 2rem;
 
-            div {
-                padding: 0 0.2rem;
+            svg {
+                padding: 0 0.4rem;
             }
 
             &::before,
@@ -130,7 +130,7 @@
     display: none;
 }
 
-.closeModal {
+.closeModalButton {
     margin: auto;
     padding: 0.4rem 3rem;
 
@@ -144,6 +144,7 @@
     &:hover {
         color: #121212;
         background-color: var(--spotlight-color);
+        transform: scale(1.1);
     }
 }
 
