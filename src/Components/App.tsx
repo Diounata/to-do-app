@@ -12,7 +12,6 @@ export default function App() {
 
     return (
         <IconContext.Provider value={{ color: `${isDarkTheme ? '#e1e1e1' : '#2f3640'}` }}>
-            
             <div id='app' className={ isDarkTheme ? 'dark-theme' : 'light-theme' }>
                 <div className='container'>
                     <Header />
@@ -23,7 +22,6 @@ export default function App() {
                 <Modal />
                 <Settings />
             </div>
-            
         </IconContext.Provider>
-    );
+    )
 }
