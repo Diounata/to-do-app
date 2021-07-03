@@ -39,15 +39,15 @@ This project was made using the following techs:
     -   Delete tasks
 
 -   ### Settings
-
-    -   Switch theme (dark/light)
-    -   Invert tasks order
-    -   Order tasks by a number
-
--   ### Function
-    -   Delete done tasks
-    -   Delete all tasks
-    -   Dismark all done tasks
+    - ### General
+        -   Switch theme (dark/light)
+        -   Invert tasks order
+        -   Order tasks by a number
+    
+    -   ### Function
+        -   Delete done tasks
+        -   Delete all tasks
+        -   Dismark all done tasks
 
 ## 🖼️ Layout
 
