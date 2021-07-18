@@ -70,6 +70,12 @@
                     color: var(--spotlight-color);
                     cursor: pointer;
                     border: 3px solid #dee3ee;
+
+                    transition: 0.2s;
+
+                    &:hover {
+                        border-color: var(--spotlight-color);
+                    }
                 }
             }
         }

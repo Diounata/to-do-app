@@ -24,6 +24,11 @@
 
             &:last-child {
                 border: 3px solid #dee3ee;
+                transition: 0.2s;
+                
+                &:hover {
+                    border-color: var(--spotlight-color);
+                }
             }
         }
 
