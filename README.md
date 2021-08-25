@@ -62,7 +62,7 @@ To clone this repository you will need Node.js installed on your computer. After
 $ git clone https://github.com/Diounata/to-do-app
 
 # Go into the repository
-$ cd color-generator
+$ cd to-do-app
 
 # Install dependencies
 $ npm install
