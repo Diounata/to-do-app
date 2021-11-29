@@ -1,17 +1,11 @@
-import App from '../Components/App';
+import styles from '../styles/index.module.scss';
 
-import { SettingsContextProvider } from '../Contexts/SettingsContext';
-import { TaskContextProvider } from '../Contexts/TaskContext';
-import { ModalContextProvider } from '../Contexts/ModalContext';
+import { Header } from '../Components/Header';
 
 export default function Home() {
-    return (
-        <TaskContextProvider>
-            <SettingsContextProvider>
-                <ModalContextProvider>
-                    <App />
-                </ModalContextProvider>
-            </SettingsContextProvider>
-        </TaskContextProvider>
-    );
+  return (
+    <div className={`${styles.container} dark`}>
+      <Header />
+    </div>
+  );
 }

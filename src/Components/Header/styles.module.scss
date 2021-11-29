@@ -1,0 +1,26 @@
+.headerContainer {
+  background: url('../../../public/bg-mobile-dark.jpg') no-repeat;
+  background-size: 100%;
+
+  height: 30vh;
+
+  padding: 1rem 2rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 3rem;
+
+    font-size: 1.4em;
+    letter-spacing: 1rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    letter-spacing: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--text);
+}
+
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  .dark {
+    --body-background: hsl(235, 21%, 11%);
+    --section-background: hsl(235, 24%, 19%);
+    --section-shadow: hsl(237, 14%, 26%);
+    --text: hsl(234, 39%, 85%);
+    --text-hover: hsl(236, 33%, 92%);
+    --done-task-text: hsl(234, 11%, 52%);
+    --mat-text: hsl(233, 14%, 35%);
+  }
+}
