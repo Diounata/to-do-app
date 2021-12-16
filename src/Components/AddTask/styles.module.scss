@@ -1,0 +1,22 @@
+.addTaskContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border-radius: 10px;
+  background: var(--section-bg);
+
+  > div {
+    margin: 1rem 1.2rem;
+    margin-right: 0;
+    padding: 0.5rem;
+
+    border: 2px solid var(--section-shadow);
+    border-radius: 50px;
+  }
+
+  input {
+    flex: 1;
+    padding-right: 1.2rem;
+  }
+}
