@@ -1,0 +1,52 @@
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+
+  article {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.7rem;
+
+    border-bottom: 2px solid var(--section-shadow);
+
+    padding: 1.1rem 1.2rem;
+
+    > div {
+      width: 1.2rem;
+      height: 1.2rem;
+
+      border: 2px solid var(--section-shadow);
+      border-radius: 50px;
+
+      display: grid;
+      place-items: center;
+    }
+
+    span {
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      font-size: 0.9em;
+    }
+
+    button {
+      display: grid;
+      place-items: center;
+
+      background: inherit;
+      border: none;
+    }
+  }
+}
+
+.selected {
+  background: linear-gradient(120deg, #57ddff, #c058f3);
+  border: none !important;
+
+  > div {
+    position: relative;
+  }
+}

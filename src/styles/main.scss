@@ -9,8 +9,8 @@
 
 :root {
   --bright-blue: hsl(220, 98%, 61%);
-  --check-bg: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-
+  --check-bg: linear-gradient(hsl(192, 100%, 67%) to hsl(280, 87%, 65%));
+  
   .dark {
     --body-bg: hsl(235, 21%, 11%);
     --section-bg: hsl(235, 24%, 19%);

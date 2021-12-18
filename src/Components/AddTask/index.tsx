@@ -4,10 +4,10 @@ import { Input } from '../Input';
 
 export function AddTask() {
   return (
-    <div className={styles.addTaskContainer}>
+    <section className={styles.addTaskContainer}>
       <div></div>
 
       <Input placeholder="Create a new todo..." />
-    </div>
+    </section>
   );
 }
