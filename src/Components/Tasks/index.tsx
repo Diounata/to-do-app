@@ -41,7 +41,9 @@ export function Tasks() {
     <div className={styles.tasksContainer}>
       {tasks.map(({ name, isDone }, key) => (
         <article className={isDone ? styles.selected : ''} key={key}>
-          <div>{isDone && <Image src="/icon-check.svg" width="10px" height="10px" alt="Done" />}</div>
+          <div>
+            {isDone ? <Image src="/icon-check.svg" width="10px" height="10px" alt="Done" /> : <span></span>}
+          </div>
 
           <span title={name}>{name}</span>
 
