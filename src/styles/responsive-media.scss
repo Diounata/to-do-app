@@ -1,0 +1,38 @@
+@mixin responsive-media {
+  @media (min-width: 600px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1000px) {
+    width: 30rem;
+  }
+}
+
+@mixin header-media {
+  @include responsive-media;
+
+  @media (min-width: 600px) {
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+}
+
+@mixin main-media {
+  @include responsive-media;
+
+  @media (min-width: 600px) {
+    top: -100px;
+    font-size: 1.2rem;
+
+    margin: 1.1rem auto;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 700px) and (min-height: 950px) {
+    top: -210px;
+  }
+
+  @media (min-width: 700px) and (min-height: 1250px) {
+    top: -310px;
+  }
+}

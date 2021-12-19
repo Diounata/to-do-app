@@ -1,3 +1,5 @@
+@use '../../styles/responsive-media' as media;
+
 .mainContainer {
   display: grid;
   grid-template-columns: 1fr;
@@ -14,16 +16,5 @@
     background: var(--section-bg);
   }
 
-  @media (min-width: 600px) {
-    width: 60%;
-    top: -100px;
-
-    margin: 1.1rem auto;
-    margin-bottom: 0;
-    font-size: 1.2rem;
-  }
-
-  @media (min-width: 800px) {
-    width: 30rem;
-  }
+  @include media.main-media;
 }

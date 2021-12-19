@@ -1,3 +1,5 @@
+@use '../../styles/responsive-media' as media;
+
 .headerContainer {
   background: url('../../../public/bg-mobile-dark.jpg') no-repeat;
   background-size: 100%;
@@ -18,24 +20,12 @@
     margin-top: 3rem;
     font-size: 1.4em;
 
-    @media (min-width: 600px) {
-      width: 60%;
-      margin: 0 auto;
-      margin-top: 3rem;
-    }
-
-    @media (min-width: 800px) {
-      width: 30rem;
-    }
+    @include media.main-media;
   }
 
   h3 {
     letter-spacing: 0.8rem;
     font-weight: 700;
     color: #ffffff;
-  }
-
-  @media (min-width: 600px) {
-    // padding-left: 0;
   }
 }
