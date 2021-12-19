@@ -9,10 +9,37 @@
   > div {
     margin: 1rem 1.2rem;
     margin-right: 0;
-    padding: 0.5rem;
+    padding: 0;
+
+    width: 1.2rem;
+    height: 1.2rem;
+
+    display: grid;
+    place-items: center;
 
     border: 2px solid var(--section-shadow);
     border-radius: 50px;
+    cursor: pointer;
+
+    > div { // img
+      width: 10px;
+      height: 10px;
+
+      background: inherit;
+      border-radius: 50px;
+
+      display: none !important;
+    }
+
+    &:hover {
+      > div { // img
+        display: inline-block !important;
+      }
+
+      padding: 2px;
+      border-width: 0;
+      background: linear-gradient(120deg, #57ddff, #c058f3);
+    }
   }
 
   input {
