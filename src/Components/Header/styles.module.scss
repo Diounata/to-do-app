@@ -1,12 +1,14 @@
 @use '../../styles/responsive-media' as media;
 
 .headerContainer {
-  background: url('../../../public/bg-mobile-dark.jpg') no-repeat;
-  background-size: 100%;
+  background: url('../../../public/bg-mobile-dark.jpg');
 
   @media (min-width: 600px) {
     background-image: url('../../../public/bg-desktop-dark.jpg');
   }
+
+  background-size: 100%;
+  background-repeat: no-repeat;
 
   height: 30vh;
 
