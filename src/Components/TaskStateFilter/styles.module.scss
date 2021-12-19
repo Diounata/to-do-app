@@ -21,6 +21,10 @@
     &:hover {
       filter: brightness(100%);
     }
+
+    @media (min-width: 600px) {
+      font-size: 1rem;
+    }
   }
 
   .selected {

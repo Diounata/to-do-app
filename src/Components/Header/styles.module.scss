@@ -2,6 +2,10 @@
   background: url('../../../public/bg-mobile-dark.jpg') no-repeat;
   background-size: 100%;
 
+  @media (min-width: 600px) {
+    background-image: url('../../../public/bg-desktop-dark.jpg');
+  }
+
   height: 30vh;
 
   padding: 1rem;
@@ -11,13 +15,27 @@
     align-items: center;
     justify-content: space-between;
 
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 1.4em;
+
+    @media (min-width: 600px) {
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 800px) {
+      width: 30rem;
+    }
   }
 
   h3 {
     letter-spacing: 0.8rem;
     font-weight: 700;
     color: #ffffff;
+  }
+
+  @media (min-width: 600px) {
+    // padding-left: 0;
   }
 }
