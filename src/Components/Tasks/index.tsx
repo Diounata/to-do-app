@@ -19,6 +19,22 @@ export function Tasks() {
       name: 'Code',
       isDone: false,
     },
+    {
+      name: 'Remake to-do-list project',
+      isDone: true,
+    },
+    {
+      name: 'Do homework',
+      isDone: true,
+    },
+    {
+      name: 'Read for 1 hour',
+      isDone: false,
+    },
+    {
+      name: 'Code',
+      isDone: false,
+    },
   ];
 
   return (
