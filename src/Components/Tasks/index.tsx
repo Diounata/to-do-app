@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 export function Tasks() {
   const tasks = [
     {
-      name: 'Remake to-do-list projecta',
+      name: 'Remake to-do-list project',
       isDone: true,
     },
     {
@@ -24,10 +24,8 @@ export function Tasks() {
   return (
     <div className={styles.tasksContainer}>
       {tasks.map(({ name, isDone }, key) => (
-        <article key={key}>
-          <div className={isDone ? styles.selected : ''}>
-            {isDone && <Image src="/icon-check.svg" width="10px" height="10px" alt="Done" />}
-          </div>
+        <article className={isDone ? styles.selected : ''} key={key}>
+          <div>{isDone && <Image src="/icon-check.svg" width="10px" height="10px" alt="Done" />}</div>
 
           <span title={name}>{name}</span>
 

@@ -2,6 +2,8 @@ import styles from './styles.module.scss';
 
 import { AddTask } from '../AddTask';
 import { Tasks } from '../Tasks';
+import { TaskFooter } from '../TaskFooter';
+import { TaskStateFilter } from '../TaskStateFilter';
 
 export function Main() {
   return (
@@ -10,12 +12,10 @@ export function Main() {
 
       <section className={styles.tasksComponent}>
         <Tasks />
-
-        <footer>
-          <div>4 items left</div>
-          <button>Clear Completed</button>
-        </footer>
+        <TaskFooter />
       </section>
+
+      <TaskStateFilter />
     </main>
   );
 }

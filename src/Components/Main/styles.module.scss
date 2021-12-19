@@ -11,21 +11,5 @@
   .tasksComponent {
     border-radius: 7px;
     background: var(--section-bg);
-
-    footer {
-      width: 100%;
-      padding: 1.1rem 1.2rem;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      filter: brightness(50%);
-
-      button {
-        background: inherit;
-        border: none;
-      }
-    }
   }
 }

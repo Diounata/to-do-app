@@ -18,9 +18,14 @@
 
       border: 2px solid var(--section-shadow);
       border-radius: 50px;
+      cursor: pointer;
 
       display: grid;
       place-items: center;
+
+      &:hover {
+        background: linear-gradient(120deg, #57ddff, #c058f3);
+      }
     }
 
     span {
@@ -38,15 +43,23 @@
 
       background: inherit;
       border: none;
+      cursor: pointer;
     }
   }
 }
 
 .selected {
-  background: linear-gradient(120deg, #57ddff, #c058f3);
-  border: none !important;
-
   > div {
-    position: relative;
+    background: linear-gradient(120deg, #57ddff, #c058f3);
+    border: none !important;
+
+    > div {
+      position: relative;
+    }
+  }
+
+  span {
+    text-decoration: line-through;
+    filter: brightness(50%);
   }
 }

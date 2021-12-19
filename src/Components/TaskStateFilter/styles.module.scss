@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  padding: 1rem 0;
+  background: var(--section-bg);
+
+  box-shadow: 0px 0px 3px 0px var(--section-shadow);
+
+  button {
+    border: none;
+    background: none;
+
+    font-weight: 700;
+    cursor: pointer;
+
+    filter: brightness(50%);
+
+    &:hover {
+      filter: brightness(100%);
+    }
+  }
+
+  .selected {
+    color: var(--bright-blue);
+    cursor: not-allowed;
+    filter: brightness(100%);
+  }
+}
