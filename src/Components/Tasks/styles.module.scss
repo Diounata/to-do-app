@@ -12,10 +12,11 @@
 
     padding: 1.1rem 1.2rem;
 
-    > div {
+    .toggleButton {
       width: 1.2rem;
       height: 1.2rem;
 
+      background: inherit;
       border: 2px solid var(--section-shadow);
       border-radius: 50px;
       cursor: pointer;
@@ -54,7 +55,7 @@
       user-select: text;
     }
 
-    button {
+    .deleteButton {
       display: grid;
       place-items: center;
 
@@ -66,8 +67,8 @@
 }
 
 .selected {
-  > div {
-    background: linear-gradient(120deg, #57ddff, #c058f3);
+  .toggleButton {
+    background: linear-gradient(120deg, #57ddff, #c058f3) !important;
     border: none !important;
 
     > div {

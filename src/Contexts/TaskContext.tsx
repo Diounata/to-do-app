@@ -19,6 +19,7 @@ interface TaskContextProps {
 
   addTask(task: TaskProps): void;
   deleteTask(id: number): void;
+  toggleTaskSituation(id: number): void;
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
@@ -39,6 +40,16 @@ export function TaskProvider({ children }: ChildrenProps) {
     setTasks(newTasks);
   }
 
+  function toggleTaskSituation(id: number): void {
+    const selectedTask = tasks.filter((_, taskId) => id === taskId)[0];
+
+    selectedTask.isDone = !selectedTask.isDone;
+
+    const newTasks = tasks.map((task, taskId) => (taskId === id ? selectedTask : task));
+
+    setTasks(newTasks);
+  }
+
   useEffect(() => {
     const undoneTasksAmount = tasks.filter(task => !task.isDone).length;
 
@@ -52,6 +63,7 @@ export function TaskProvider({ children }: ChildrenProps) {
         remainingTasks,
         addTask,
         deleteTask,
+        toggleTaskSituation,
       }}
     >
       {children}
