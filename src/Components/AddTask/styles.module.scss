@@ -6,7 +6,7 @@
   border-radius: 7px;
   background: var(--section-bg);
 
-  > div {
+  button {
     margin: 1rem 1.2rem;
     margin-right: 0;
     padding: 0;
@@ -17,11 +17,13 @@
     display: grid;
     place-items: center;
 
+    background: inherit;
     border: 2px solid var(--section-shadow);
     border-radius: 50px;
     cursor: pointer;
 
-    > div { // img
+    > div {
+      // img
       width: 10px;
       height: 10px;
 
@@ -32,7 +34,8 @@
     }
 
     &:hover {
-      > div { // img
+      > div {
+        // img
         display: inline-block !important;
       }
 
@@ -45,6 +48,10 @@
   input {
     flex: 1;
     padding-right: 1.2rem;
+
+    background: inherit;
+    border: none;
+    outline: none;
 
     @media (min-width: 600px) {
       font-size: 1.1rem;

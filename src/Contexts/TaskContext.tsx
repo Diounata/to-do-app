@@ -16,11 +16,21 @@ interface TaskProps {
 interface TaskContextProps {
   tasks: TaskProps[];
   remainingTasks: number;
+
+  addTask(task: TaskProps): void;
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
   const [tasks, setTasks] = useState<TaskProps[]>(TasksJson);
   const [remainingTasks, setRemainingTasks] = useState<number>(0);
+
+  function addTask(task: TaskProps): void {
+    if (task.name) {
+      const newTasks = [task, ...tasks];
+
+      setTasks(newTasks);
+    }
+  }
 
   useEffect(() => {
     const undoneTasksAmount = tasks.filter(task => !task.isDone).length;
@@ -28,7 +38,7 @@ export function TaskProvider({ children }: ChildrenProps) {
     setRemainingTasks(undoneTasksAmount);
   }, [tasks]);
 
-  return <TaskContext.Provider value={{ tasks, remainingTasks }}>{children}</TaskContext.Provider>;
+  return <TaskContext.Provider value={{ tasks, remainingTasks, addTask }}>{children}</TaskContext.Provider>;
 }
 
 export function useTask() {
