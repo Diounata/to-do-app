@@ -1,41 +1,10 @@
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
+import { useTask } from '../../Contexts/TaskContext';
+
 export function Tasks() {
-  const tasks = [
-    {
-      name: 'Remake to-do-list project',
-      isDone: true,
-    },
-    {
-      name: 'Do homework',
-      isDone: true,
-    },
-    {
-      name: 'Read for 1 hour',
-      isDone: false,
-    },
-    {
-      name: 'Code',
-      isDone: false,
-    },
-    {
-      name: 'Remake to-do-list project',
-      isDone: true,
-    },
-    {
-      name: 'Do homework',
-      isDone: true,
-    },
-    {
-      name: 'Read for 1 hour',
-      isDone: false,
-    },
-    {
-      name: 'Code',
-      isDone: false,
-    },
-  ];
+  const { tasks } = useTask();
 
   return (
     <div className={styles.tasksContainer}>
