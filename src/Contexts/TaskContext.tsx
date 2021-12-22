@@ -19,6 +19,7 @@ interface TaskContextProps {
 
   addTask(task: TaskProps): void;
   deleteTask(id: number): void;
+  deleteDoneTasks(): void;
   toggleTaskSituation(id: number): void;
 }
 
@@ -38,6 +39,12 @@ export function TaskProvider({ children }: ChildrenProps) {
     const newTasks = tasks.filter((_, taskId) => id !== taskId);
 
     setTasks(newTasks);
+  }
+
+  function deleteDoneTasks(): void {
+    const undoneTasks = tasks.filter(task => !task.isDone);
+
+    setTasks(undoneTasks);
   }
 
   function toggleTaskSituation(id: number): void {
@@ -63,6 +70,7 @@ export function TaskProvider({ children }: ChildrenProps) {
         remainingTasks,
         addTask,
         deleteTask,
+        deleteDoneTasks,
         toggleTaskSituation,
       }}
     >
