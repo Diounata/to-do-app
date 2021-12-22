@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { useTask } from '../../Contexts/TaskContext';
 
 export function Tasks() {
-  const { tasks } = useTask();
+  const { tasks, deleteTask } = useTask();
 
   return (
     <div className={styles.tasksContainer}>
@@ -16,7 +16,7 @@ export function Tasks() {
 
           <span title={name}>{name}</span>
 
-          <button>
+          <button onClick={() => deleteTask(key)}>
             <Image src="/icon-cross.svg" width="16px" height="16px" alt="Delete" title="Delete" />
           </button>
         </article>

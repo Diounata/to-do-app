@@ -18,6 +18,7 @@ interface TaskContextProps {
   remainingTasks: number;
 
   addTask(task: TaskProps): void;
+  deleteTask(id: number): void;
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
@@ -32,13 +33,30 @@ export function TaskProvider({ children }: ChildrenProps) {
     }
   }
 
+  function deleteTask(id: number): void {
+    const newTasks = tasks.filter((_, taskId) => id !== taskId);
+
+    setTasks(newTasks);
+  }
+
   useEffect(() => {
     const undoneTasksAmount = tasks.filter(task => !task.isDone).length;
 
     setRemainingTasks(undoneTasksAmount);
   }, [tasks]);
 
-  return <TaskContext.Provider value={{ tasks, remainingTasks, addTask }}>{children}</TaskContext.Provider>;
+  return (
+    <TaskContext.Provider
+      value={{
+        tasks,
+        remainingTasks,
+        addTask,
+        deleteTask,
+      }}
+    >
+      {children}
+    </TaskContext.Provider>
+  );
 }
 
 export function useTask() {
