@@ -35,8 +35,7 @@ export function TaskProvider({ children }: ChildrenProps) {
 
   function addTask(task: TaskProps): void {
     if (task.name) {
-      const id = uuidv4();
-      const newTasks = [{ ...task, id }, ...tasks];
+      const newTasks = [task, ...tasks];
 
       setTasks(newTasks);
     }

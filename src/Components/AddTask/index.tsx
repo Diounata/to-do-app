@@ -4,13 +4,17 @@ import styles from './styles.module.scss';
 
 import { useTask } from '../../Contexts/TaskContext';
 
+import { v4 as uuidv4 } from 'uuid';
+
 export function AddTask() {
   const { addTask } = useTask();
 
   const [name, setName] = useState('');
 
   function executeAddTask(): void {
-    addTask({ name, isDone: false });
+    const id = uuidv4();
+
+    addTask({ id, name, isDone: false });
     setName('');
   }
 
