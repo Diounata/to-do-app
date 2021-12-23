@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export const TaskContext = createContext({} as TaskContextProps);
 
@@ -9,6 +10,7 @@ interface ChildrenProps {
 }
 
 interface TaskProps {
+  id: string;
   name: string;
   isDone: boolean;
 }
@@ -21,9 +23,9 @@ interface TaskContextProps {
   tasksFilter: TasksFilterProps;
 
   addTask(task: TaskProps): void;
-  deleteTask(id: number): void;
+  deleteTask(id: string): void;
   deleteDoneTasks(): void;
-  toggleTaskSituation(id: number): void;
+  toggleTaskSituation(id: string): void;
   updateTasksFilter(filter: TasksFilterProps): void;
   filterTasksBySituation(): TaskProps[];
 }
@@ -35,14 +37,15 @@ export function TaskProvider({ children }: ChildrenProps) {
 
   function addTask(task: TaskProps): void {
     if (task.name) {
-      const newTasks = [task, ...tasks];
+      const id = uuidv4();
+      const newTasks = [{ ...task, id }, ...tasks];
 
       setTasks(newTasks);
     }
   }
 
-  function deleteTask(id: number): void {
-    const newTasks = tasks.filter((_, taskId) => id !== taskId);
+  function deleteTask(id: string): void {
+    const newTasks = tasks.filter(task => id !== task.id);
 
     setTasks(newTasks);
   }
@@ -53,12 +56,12 @@ export function TaskProvider({ children }: ChildrenProps) {
     setTasks(undoneTasks);
   }
 
-  function toggleTaskSituation(id: number): void {
-    const selectedTask = tasks.filter((_, taskId) => id === taskId)[0];
+  function toggleTaskSituation(id: string): void {
+    const selectedTask = tasks.filter(task => id === task.id)[0];
 
     selectedTask.isDone = !selectedTask.isDone;
 
-    const newTasks = tasks.map((task, taskId) => (taskId === id ? selectedTask : task));
+    const newTasks = tasks.map(task => (task.id === id ? selectedTask : task));
 
     setTasks(newTasks);
   }
