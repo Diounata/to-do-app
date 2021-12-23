@@ -78,6 +78,7 @@
 
   span {
     text-decoration: line-through;
-    filter: brightness(50%);
+
+    filter: var(--opacity-text);
   }
 }

@@ -16,10 +16,10 @@
     font-weight: 700;
     cursor: pointer;
 
-    filter: brightness(50%);
+    filter: var(--opacity-text);
 
     &:hover {
-      filter: brightness(100%);
+      filter: brightness(90%);
     }
 
     @media (min-width: 600px) {

@@ -12,7 +12,8 @@ body {
   overflow-x: hidden;
 }
 
-button, div {
+button,
+div {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -29,13 +30,19 @@ button, div {
 :root {
   --bright-blue: hsl(220, 98%, 61%);
 
+  .light {
+    --body-bg: hsl(236, 33%, 92%);
+    --section-bg: hsl(0, 0%, 98%);
+    --section-shadow: hsl(233, 11%, 84%);
+    --text: hsl(235, 19%, 35%);
+    --opacity-text: brightness(150%);
+  }
+
   .dark {
     --body-bg: hsl(235, 21%, 11%);
     --section-bg: hsl(235, 24%, 19%);
     --section-shadow: hsl(237, 14%, 26%);
     --text: hsl(234, 39%, 85%);
-    --text-hover: hsl(236, 33%, 92%);
-    --done-task-text: hsl(234, 11%, 52%);
-    --mat-text: hsl(233, 14%, 35%);
+    --opacity-text: brightness(50%);
   }
 }

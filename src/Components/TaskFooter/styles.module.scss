@@ -8,7 +8,7 @@
 
   div,
   button {
-    filter: brightness(50%);
+    filter: var(--opacity-text);
   }
 
   button {
