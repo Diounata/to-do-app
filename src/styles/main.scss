@@ -36,6 +36,9 @@ div {
     --section-shadow: hsl(233, 11%, 84%);
     --text: hsl(235, 19%, 35%);
     --opacity-text: brightness(150%);
+
+    --header-desktop-img: url('../../public/bg-desktop-light.jpg');
+    --header-mobile-img: url('../../public/bg-mobile-light.jpg');
   }
 
   .dark {
@@ -44,5 +47,8 @@ div {
     --section-shadow: hsl(237, 14%, 26%);
     --text: hsl(234, 39%, 85%);
     --opacity-text: brightness(50%);
+
+    --header-desktop-img: url('../../public/bg-desktop-dark.jpg');
+    --header-mobile-img: url('../../public/bg-mobile-dark.jpg');
   }
 }

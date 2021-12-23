@@ -1,16 +1,14 @@
-import styles from '../styles/index.module.scss';
+import { App } from '../Components/App';
 
-import { Header } from '../Components/Header';
-import { Main } from '../Components/Main';
 import { TaskProvider } from '../Contexts/TaskContext';
+import { ThemeProvider } from '../Contexts/ThemeContext';
 
 export default function Home() {
   return (
-    <TaskProvider>
-      <div className={`${styles.container} dark`}>
-        <Header />
-        <Main />
-      </div>
-    </TaskProvider>
+    <ThemeProvider>
+      <TaskProvider>
+        <App />
+      </TaskProvider>
+    </ThemeProvider>
   );
 }

@@ -1,10 +1,10 @@
 @use '../../styles/responsive-media' as media;
 
 .headerContainer {
-  background-image: url('../../../public/bg-mobile-dark.jpg');
+  background-image: var(--header-mobile-img);
 
   @media (min-width: 600px) {
-    background-image: url('../../../public/bg-desktop-dark.jpg');
+    background-image: var(--header-desktop-img);
   }
 
   background-size: 100%;
@@ -23,6 +23,15 @@
     font-size: 1.4em;
 
     @include media.main-media;
+
+    > div {
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        transform: rotateZ(-90deg);
+      }
+    }
   }
 
   h3 {
