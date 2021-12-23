@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext({} as ContextProps);
 
@@ -21,6 +21,16 @@ export function ThemeProvider({ children }: ChildrenProps) {
 
     setTheme(newTheme);
   }
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem('local-theme');
+
+    if (localTheme) {
+      setTheme(JSON.parse(localTheme));
+    }
+  }, []);
+
+  useEffect(() => localStorage.setItem('local-theme', JSON.stringify(theme)), [theme]);
 
   return (
     <ThemeContext.Provider

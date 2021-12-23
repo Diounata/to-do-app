@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const TaskContext = createContext({} as TaskContextProps);
 
-import TasksJson from './Tasks.json';
-
 interface ChildrenProps {
   children: ReactNode;
 }
@@ -31,7 +29,7 @@ interface TaskContextProps {
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
-  const [tasks, setTasks] = useState<TaskProps[]>(TasksJson);
+  const [tasks, setTasks] = useState([] as TaskProps[]);
   const [remainingTasks, setRemainingTasks] = useState<number>(0);
   const [tasksFilter, setTasksFilter] = useState<TasksFilterProps>('All');
 
@@ -82,9 +80,18 @@ export function TaskProvider({ children }: ChildrenProps) {
   }
 
   useEffect(() => {
+    const localData = localStorage.getItem('local-tasks');
+
+    if (localData) {
+      setTasks(JSON.parse(localData));
+    }
+  }, []);
+
+  useEffect(() => {
     const undoneTasksAmount = tasks.filter(task => !task.isDone).length;
 
     setRemainingTasks(undoneTasksAmount);
+    localStorage.setItem('local-tasks', JSON.stringify(tasks));
   }, [tasks]);
 
   return (
