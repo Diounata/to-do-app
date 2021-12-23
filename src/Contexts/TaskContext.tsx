@@ -13,19 +13,25 @@ interface TaskProps {
   isDone: boolean;
 }
 
+type TasksFilterProps = 'All' | 'Active' | 'Completed';
+
 interface TaskContextProps {
   tasks: TaskProps[];
   remainingTasks: number;
+  tasksFilter: TasksFilterProps;
 
   addTask(task: TaskProps): void;
   deleteTask(id: number): void;
   deleteDoneTasks(): void;
   toggleTaskSituation(id: number): void;
+  updateTasksFilter(filter: TasksFilterProps): void;
+  filterTasksBySituation(): TaskProps[];
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
   const [tasks, setTasks] = useState<TaskProps[]>(TasksJson);
   const [remainingTasks, setRemainingTasks] = useState<number>(0);
+  const [tasksFilter, setTasksFilter] = useState<TasksFilterProps>('All');
 
   function addTask(task: TaskProps): void {
     if (task.name) {
@@ -57,6 +63,21 @@ export function TaskProvider({ children }: ChildrenProps) {
     setTasks(newTasks);
   }
 
+  function updateTasksFilter(filter: TasksFilterProps): void {
+    setTasksFilter(filter);
+  }
+
+  function filterTasksBySituation(): TaskProps[] {
+    switch (tasksFilter) {
+      case 'Completed':
+        return tasks.filter(task => task.isDone);
+      case 'Active':
+        return tasks.filter(task => !task.isDone);
+      default:
+        return tasks;
+    }
+  }
+
   useEffect(() => {
     const undoneTasksAmount = tasks.filter(task => !task.isDone).length;
 
@@ -68,10 +89,13 @@ export function TaskProvider({ children }: ChildrenProps) {
       value={{
         tasks,
         remainingTasks,
+        tasksFilter,
         addTask,
         deleteTask,
         deleteDoneTasks,
         toggleTaskSituation,
+        updateTasksFilter,
+        filterTasksBySituation,
       }}
     >
       {children}

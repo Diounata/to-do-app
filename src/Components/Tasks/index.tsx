@@ -4,11 +4,13 @@ import styles from './styles.module.scss';
 import { useTask } from '../../Contexts/TaskContext';
 
 export function Tasks() {
-  const { tasks, deleteTask, toggleTaskSituation } = useTask();
+  const { deleteTask, toggleTaskSituation, filterTasksBySituation } = useTask();
+
+  const filteredTasks = filterTasksBySituation();
 
   return (
     <div className={styles.tasksContainer}>
-      {tasks.map(({ name, isDone }, key) => (
+      {filteredTasks.map(({ name, isDone }, key) => (
         <article className={isDone ? styles.selected : ''} key={key}>
           <button onClick={() => toggleTaskSituation(key)} className={styles.toggleButton}>
             {isDone ? <Image src="/icon-check.svg" width="10px" height="10px" alt="Done" /> : <span />}

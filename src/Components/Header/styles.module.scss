@@ -1,7 +1,7 @@
 @use '../../styles/responsive-media' as media;
 
 .headerContainer {
-  background: url('../../../public/bg-mobile-dark.jpg');
+  background-image: url('../../../public/bg-mobile-dark.jpg');
 
   @media (min-width: 600px) {
     background-image: url('../../../public/bg-desktop-dark.jpg');
