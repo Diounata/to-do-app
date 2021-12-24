@@ -1,4 +1,4 @@
-<h1 align='center'> :bookmark_tabs: To-do app </h1>
+<h1 align='center'> :memo: To-do app </h1>
 
 <p align='center'>
 <img src='https://img.shields.io/github/repo-size/Diounata/to-do-app?style=for-the-badge' />
@@ -13,45 +13,48 @@
 </p>
 
 <p align='center'>
-<img src="https://github.com/Diounata/to-do-app/blob/main/.github/demo-app.png" alt="App image" />
+<img src="https://github.com/Diounata/to-do-app/blob/main/.github/app-demo.png" alt="App demo" title="App demo" />
 </p>
  
 ## :dart: Overview
+
 <p>
-Do you have any problems when it comes to manage your routine? Your problems has been solved! With this to-do-app you are able to create your tasks and manage it with an interactive interface.
+To-do-app is a React application focusing on personal routine management. Here you are able to create, delete and toggle your tasks without any problem using a stylish interface.
 </p>
+
+<p>
+It is the 2nd app version I made. The 1st app version was my first complete React project, in which I learned a lot of things about coding, so I decided to make a better version.
+</p>
+
+<p>The 2nd app version layout is one of <a href="https://www.frontendmentor.io/challenges">Frontend Mentor</a> challenges.</p>
 
 ## :books: Technologies
 
 This project was made using the following techs:
 
--   [React.js](https://reactjs.org/)
--   [Next.js](https://nextjs.org/)
--   [Typescript](https://www.typescriptlang.org/)
--   [Sass](https://sass-lang.com/)
+- [React.js](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [React-icons](https://react-icons.github.io/react-icons)
+- [UUID](https://www.npmjs.com/package/uuid)
 
 ## :performing_arts: Features
 
--   ### Tasks
-
-    -   Create tasks
-    -   Change task situation (done/undone)
-    -   Delete tasks
-
--   ### Settings
-    - ### General
-        -   Switch theme (dark/light)
-        -   Invert tasks order
-        -   Order tasks by a number
-    
-    -   ### Function
-        -   Delete done tasks
-        -   Delete all tasks
-        -   Dismark all done tasks
+- Create tasks
+- Toggle task situation (done/undone)
+- Delete tasks
+- Toggle theme (dark/light)
 
 ## 🖼️ Layout
 
-The to-do app layout was inspired in an item from this list that you may check <a href='https://medium.muz.li/todo-list-inspiration-a1d736c2718a'>here</a>.
+<p>
+First app version layout was inspired in an item from this list that you may check <a href='https://medium.muz.li/todo-list-inspiration-a1d736c2718a'>here</a>.
+</p>
+
+<p>
+Final app version layout is a <a href="https://www.frontendmentor.io/challenges">Frontend Mentor</a> challenge.
+</p>
 
 ## :gear: How to use
 

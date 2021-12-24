@@ -4,7 +4,7 @@ import { AddTask } from '../AddTask';
 import { Tasks } from '../Tasks';
 import { TaskFooter } from '../TaskFooter';
 import { TaskStateFilter } from '../TaskStateFilter';
-import { DragAlert } from '../DragAlert';
+import { Footer } from '../Footer';
 
 export function Main() {
   return (
@@ -17,7 +17,7 @@ export function Main() {
       </section>
 
       <TaskStateFilter />
-      <DragAlert />
+      <Footer />
     </main>
   );
 }
