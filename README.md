@@ -13,7 +13,9 @@
 </p>
 
 <p align='center'>
-<img src="https://github.com/Diounata/to-do-app/blob/main/.github/app-demo.png" alt="App demo" title="App demo" />
+<img src="https://github.com/Diounata/to-do-app/blob/main/.github/light-app.png" alt="App light-theme demo" title="Light-theme demo" width="280px" />
+&nbsp; &nbsp; &nbsp;
+<img src="https://github.com/Diounata/to-do-app/blob/main/.github/dark-app.png" alt="App dark-theme demo" title="Dark-theme demo" width="300px" />
 </p>
  
 ## :dart: Overview
