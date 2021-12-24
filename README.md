@@ -46,6 +46,8 @@ This project was made using the following techs:
 - Create tasks
 - Toggle task situation (done/undone)
 - Delete tasks
+- Delete completed tasks
+- Filter tasks (all/active/completed)
 - Toggle theme (dark/light)
 
 ## 🖼️ Layout
