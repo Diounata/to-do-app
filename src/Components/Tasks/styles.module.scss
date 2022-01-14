@@ -8,9 +8,10 @@
     align-items: center;
     gap: 0.7rem;
 
-    border-bottom: 2px solid var(--section-shadow);
-
     padding: 1.1rem 1.2rem;
+
+    border-bottom: 2px solid var(--section-shadow);
+    user-select: none;
 
     .toggleButton {
       width: 1.2rem;

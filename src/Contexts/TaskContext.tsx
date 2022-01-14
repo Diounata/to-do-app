@@ -35,9 +35,12 @@ export function TaskProvider({ children }: ChildrenProps) {
 
   function addTask(task: TaskProps): void {
     if (task.name) {
-      const newTasks = [task, ...tasks];
+      const name = task.name.trim();
+      const newTask: TaskProps = { ...task, name };
 
-      setTasks(newTasks);
+      const newTasksArray = [newTask, ...tasks];
+
+      setTasks(newTasksArray);
     }
   }
 
