@@ -26,6 +26,7 @@ interface TaskContextProps {
   toggleTaskSituation(id: string): void;
   updateTasksFilter(filter: TasksFilterProps): void;
   filterTasksBySituation(): TaskProps[];
+  getAmountOfLeftItems(): string;
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
@@ -81,6 +82,24 @@ export function TaskProvider({ children }: ChildrenProps) {
     }
   }
 
+  function getAmountOfLeftItems(): string {
+    const getFormattedItemWord = (amount: number): string => {
+      return amount === 1 ? 'item' : 'items';
+    };
+
+    const getTaskAmount = (amount: number): string => {
+      return amount === 0 ? 'No' : amount.toString();
+    };
+
+    if (tasksFilter === 'Completed') {
+      const completedTasksLength = tasks.length - remainingTasks;
+
+      return `${getTaskAmount(completedTasksLength)} completed ${getFormattedItemWord(completedTasksLength)}`;
+    } else {
+      return `${getTaskAmount(remainingTasks)} ${getFormattedItemWord(remainingTasks)} left`;
+    }
+  }
+
   useEffect(() => {
     const localData = localStorage.getItem('local-tasks');
 
@@ -108,6 +127,7 @@ export function TaskProvider({ children }: ChildrenProps) {
         toggleTaskSituation,
         updateTasksFilter,
         filterTasksBySituation,
+        getAmountOfLeftItems,
       }}
     >
       {children}
