@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 
 import { useTask } from '../../Contexts/TaskContext';
 
+import { FaUndo } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 
 export function AddTask() {
@@ -30,6 +31,8 @@ export function AddTask() {
         onChange={e => setName(e.target.value)}
         value={name}
       />
+
+      <FaUndo onClick={() => setName('')} title="Reset" />
     </section>
   );
 }

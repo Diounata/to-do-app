@@ -47,7 +47,6 @@
 
   input {
     flex: 1;
-    padding-right: 1.2rem;
 
     background: inherit;
     border: none;
@@ -55,6 +54,21 @@
 
     @media (min-width: 600px) {
       font-size: 1.1rem;
+    }
+  }
+
+  svg {
+    margin-right: 1.2rem;
+
+    font-size: 0.8em;
+    cursor: pointer;
+
+    opacity: 0.4;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+      transform: rotate(-30deg);
     }
   }
 }
