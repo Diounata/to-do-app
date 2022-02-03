@@ -4,7 +4,7 @@
 
   article {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: center;
     gap: 0.7rem;
 
@@ -56,13 +56,24 @@
       user-select: text;
     }
 
+    button,
     .deleteButton {
       display: grid;
       place-items: center;
 
+      font-size: 1em;
+
       background: inherit;
       border: none;
       cursor: pointer;
+    }
+
+    .copyButton {
+      opacity: 0;
+    }
+
+    &:hover .copyButton {
+      opacity: 1;
     }
   }
 }

@@ -49,6 +49,7 @@ This project was made using the following techs:
 - Delete completed tasks
 - Filter tasks (all/active/completed)
 - Toggle theme (dark/light)
+- Copy task value to clipboard
 
 ## 🖼️ Layout
 

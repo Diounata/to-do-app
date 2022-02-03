@@ -27,6 +27,7 @@ interface TaskContextProps {
   updateTasksFilter(filter: TasksFilterProps): void;
   filterTasksBySituation(): TaskProps[];
   getAmountOfLeftItems(): string;
+  copyToClipboard(value: string): void;
 }
 
 export function TaskProvider({ children }: ChildrenProps) {
@@ -100,6 +101,13 @@ export function TaskProvider({ children }: ChildrenProps) {
     }
   }
 
+  function copyToClipboard(value: string): void {
+    navigator.clipboard.writeText(value).then(
+      () => console.log(`Copied '${value}'`),
+      err => console.error(err)
+    );
+  }
+
   useEffect(() => {
     const localData = localStorage.getItem('local-tasks');
 
@@ -128,6 +136,7 @@ export function TaskProvider({ children }: ChildrenProps) {
         updateTasksFilter,
         filterTasksBySituation,
         getAmountOfLeftItems,
+        copyToClipboard,
       }}
     >
       {children}
