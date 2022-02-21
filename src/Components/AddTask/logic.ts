@@ -29,7 +29,7 @@ function useAddTask(): Props {
   }
 
   function handleEnterClick(e: KeyboardEvent<HTMLInputElement>): void {
-    if (e.code === 'Enter') handleAddTask();
+    if (e.code === 'Enter' || e.code === 'NumpadEnter') handleAddTask();
   }
 
   function resetName(): void {
