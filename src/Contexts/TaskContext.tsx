@@ -26,7 +26,7 @@ interface TaskContextProps {
   toggleTaskSituation(id: string): void;
   updateTasksFilter(filter: TasksFilterProps): void;
   filterTasksBySituation(): TaskProps[];
-  getAmountOfLeftItems(): string;
+  getItemsAmount(): string;
   copyToClipboard(value: string): void;
 }
 
@@ -84,21 +84,17 @@ export function TaskProvider({ children }: ChildrenProps) {
     }
   }
 
-  function getAmountOfLeftItems(): string {
-    const getFormattedItemWord = (amount: number): string => {
-      return amount === 1 ? 'item' : 'items';
-    };
+  function getItemsAmount(): string {
+    const getFormattedItemWord = (amount: number): string => amount === 1 ? 'item' : 'items';
 
-    const getTaskAmount = (amount: number): string => {
-      return amount === 0 ? 'No' : amount.toString();
-    };
+    const getTasksAmount = (amount: number): string => amount === 0 ? 'No' : amount.toString();
 
     if (tasksFilter === 'Completed') {
-      const completedTasksLength = tasks.length - remainingTasks;
+      const doneTasksAmount = tasks.length - remainingTasks;
 
-      return `${getTaskAmount(completedTasksLength)} completed ${getFormattedItemWord(completedTasksLength)}`;
+      return `${getTasksAmount(doneTasksAmount)} completed ${getFormattedItemWord(doneTasksAmount)}`;
     } else {
-      return `${getTaskAmount(remainingTasks)} ${getFormattedItemWord(remainingTasks)} left`;
+      return `${getTasksAmount(remainingTasks)} ${getFormattedItemWord(remainingTasks)} left`;
     }
   }
 
@@ -136,7 +132,7 @@ export function TaskProvider({ children }: ChildrenProps) {
         toggleTaskSituation,
         updateTasksFilter,
         filterTasksBySituation,
-        getAmountOfLeftItems,
+        getItemsAmount,
         copyToClipboard,
       }}
     >
