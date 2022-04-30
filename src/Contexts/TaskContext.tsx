@@ -87,15 +87,13 @@ export function TaskProvider({ children }: ChildrenProps) {
   function getItemsAmount(): string {
     const getFormattedItemWord = (amount: number): string => amount === 1 ? 'item' : 'items';
 
-    const getTasksAmount = (amount: number): string => amount === 0 ? 'No' : amount.toString();
-
     if (tasksFilter === 'Completed') {
       const doneTasksAmount = tasks.length - remainingTasks;
 
-      return `${getTasksAmount(doneTasksAmount)} completed ${getFormattedItemWord(doneTasksAmount)}`;
-    } else {
-      return `${getTasksAmount(remainingTasks)} ${getFormattedItemWord(remainingTasks)} left`;
+      return `${doneTasksAmount || 'No'} completed ${getFormattedItemWord(doneTasksAmount)}`;
     }
+    
+    return `${remainingTasks || 'No'} ${getFormattedItemWord(remainingTasks)} left`;
   }
 
   function copyToClipboard(value: string): void {
